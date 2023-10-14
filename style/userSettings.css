@@ -1,0 +1,136 @@
+main{
+    display: flex;
+    padding-inline: 100px;
+    gap: 100px;
+}
+
+main .right{
+    margin-top: 75px;
+}
+
+main .left{
+    width: 20%;
+    border-right: 1px solid black;
+    height: 100vh;
+}
+
+main .left .tabList li{
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 68px;
+    cursor: pointer;
+}
+
+main .left .tabList{
+    margin-top: 75px;
+}
+
+main .left .tabList li.active{
+    font-weight: 600;
+    text-decoration-line: underline;
+}
+
+main .right .generalInformationTab{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+main .right .generalInformationTab .profilePic{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+main .right .generalInformationTab .profilePic img{
+    height: 90px;
+    width: 90px;
+    border-radius: 144px;
+    border: 1px solid black;
+}
+
+.settingTitle{
+    width: 344px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.tabHeader{
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.setting{
+    display: flex;
+    align-items: center;
+}
+
+.tabSubHeader{
+    font-weight: 700;
+    font-size: 27px;
+    margin-top: 50px; 
+    margin-bottom: 20px;
+}
+
+.setting input, .setting textarea{
+    border: 1px solid black;
+    padding-inline: 10px;
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+.setting.description{
+    align-items: start;
+}
+.setting.description textarea{
+    height: 300px;
+    padding-block: 10px;
+    resize: vertical;
+    min-height: 30px;
+    overflow-y: hidden;
+}
+
+.buttons{
+    margin-block: 30px;
+    display: flex;
+    gap: 30px;
+}
+
+.right .tabs .myOffersTab .allOffers .offersLi{
+    height: auto;
+    border-radius: 16px;
+    width: 1000px;
+}
+
+.right .tabs .myOffersTab .allOffers .offersLi .orders{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #D9D9D9;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.right .tabs .myOffersTab .allOffers .offersLi .orders .ordersLi{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: white;
+    border-radius: 16px;
+}
+
+.right .tabs .myOffersTab .allOffers .offersLi .orders .ordersLi .infos{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 350px;
+}
+
+.right .tabs .myOffersTab .allOffers .offerName{
+    font-weight: 600;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}

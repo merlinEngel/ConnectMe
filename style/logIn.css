@@ -1,0 +1,86 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-inline: 100px;
+}
+
+main .logo, main .logo svg{
+    height: 80px;
+}
+
+main .mainSection{
+    margin-top: 40px;
+    background: #A7A7A7;
+    height: 426px;
+    width: 402px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+main .mainSection .buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+
+main .mainSection .buttons div{
+    width: 250px;
+    display: flex;
+    font-weight: 400;
+    font-size: 27px;
+}
+
+main .mainSection p{
+    font-weight: 500;
+    margin-left: 10px;
+    font-size: 20px;
+    
+}
+
+main .mainSection .input{
+    width: 400px;
+}
+main .mainSection .inputFields{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main .mainSection .inputFields .nameFields{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 28px;
+    gap: 10px;
+}
+main .mainSection .inputFields .nameFields *{
+    width: 170px;
+}
+
+input[type=text], input[type=password]{
+    border: none;
+    font-size: 20px;
+    padding-inline: 10px;
+    width: 375px;
+    border-radius: 8px;
+    padding-block: 3px;
+}
+
+.password .field{
+    display: flex;
+    align-items: center;
+}
+
+.password .field i{
+    position: relative;
+    right: 8%;
+    cursor: pointer;
+    color: gray;
+}

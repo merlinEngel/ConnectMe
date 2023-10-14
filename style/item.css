@@ -1,0 +1,161 @@
+h3{
+    font-weight: 800;
+    font-size: 60px;
+    margin-inline: 100px;
+    margin-top: 30px;
+}
+
+.wrapper{
+    margin-inline: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left{
+    width: 55%;
+    margin-right: 5%;
+}
+
+.right{
+    flex-grow: 1;
+}
+
+.images{
+    height: 545px;
+}
+
+.images img{
+    height:488px;
+    width: 100%;
+    background-size: contain;
+    border-radius: 16px;
+}
+
+.images .imgGallery{
+    height: 51px;
+}
+.images .imgGallery ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.images .imgGallery ul li{
+    border-radius: 9px;
+    background: #D9D9D9;
+    width: 100px;
+    height: 50px;
+}
+.images .imgGallery ul li img{
+    width: 100px;
+    height: 50px;
+}
+.images .imgGallery ul li.active{
+    background: #B7B7B7;
+}
+
+.userInfo{
+    height: 133px;
+    flex-grow: 1;
+    background: #D9D9D9;
+    border-radius: 16px;
+    margin-top: 46px;
+    padding-inline: 20px;
+    padding-block: 20px;
+}
+
+.userInfo .topLine{
+    display: flex;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.userInfo .topLine .profilePic{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+.userInfo .topLine .userName{
+    font-size: 25px;
+    font-weight: 300;
+    
+}
+
+.userInfo .topLine .rating ul{
+    margin-inline: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+}
+
+.userInfo .topLine .queuedOrders{
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.wrapper .right .topContainer{
+    height: 515px;
+    width:489px;
+    background: #D9D9D9;
+    border-radius: 16px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrapper .right .topContainer .description{
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.wrapper .right .topContainer .bookNowBtn{
+    width: 443px;
+    height: 90px;
+    align-self: center;
+    justify-self: end;
+    margin-bottom: 27px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.wrapper .right .topContainer .features{
+    height: auto;
+    margin-top: 40px;
+}
+
+.wrapper .right .topContainer .features .topLine p{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.wrapper .right .topContainer .features .topLine svg{
+    width: 9px;
+    height: 12.251px;
+}
+
+.wrapper .right .topContainer .features .topLine{
+    display: flex;
+    align-items: center;
+}
+
+.wrapper .right .lowerContainer{
+    background: #D9D9D9;
+    border-radius: 16px;
+    width: 489px;
+    padding: 15px;
+    height: 123px;
+    margin-top: 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.wrapper .right .lowerContainer .cost, .wrapper .right .lowerContainer .completionTime, .wrapper .right .lowerContainer .avrgRating{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 20px;
+}
