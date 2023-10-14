@@ -23,82 +23,19 @@ function getUser(id){
     if(id){
         userId = id;
     }
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", "getItem.php", false);
-    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-    // var data = {
-    //     id:userId,
-    //     type:"user"
-    // };
-
-    // var params = Object.keys(data).map(function (key) {
-    //     return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-    // }).join("&");
-
-    // xhr.send(params);
-
     return toJSON(query("SELECT * FROM `user` WHERE id=" + userId).responseText);
 }
 function getUserByName(name){
     return toJSON(query("SELECT * FROM `user` WHERE fullName='"+name+"'").responseText);
 }
 function getUserByEmail(email){
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", "getUser.php", false);
-    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    
-    // var data = {
-    //     value:email,
-    //     type:"emailAddress"
-    // };
-
-    // var params = Object.keys(data).map(function (key) {
-    //     return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-    // }).join("&");
-
-    // xhr.send(params);
-
-    // return xhr.responseText;
     return toJSON(query("SELECT * FROM `user` WHERE emailAddress="+email).responseText);
 }
 function removeUserCookie(){
     document.cookie = "userId=;"
 }
-function createUser(fullName, emailAddress, password, saveUserCookie){
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", "createUser.php", false);
-    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-    // var data = {
-    //     fullName:fullName,
-    //     emailAddress:emailAddress,
-    //     password:password,
-    //     saveUserCookie:saveUserCookie
-    // };
-
-    // var params = Object.keys(data).map(function (key) {
-    //     return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-    // }).join("&");
-
-    // xhr.send(params);
-    query("INSERT INTO user (fullName, emailAddress, `password`, saveUserCookie) VALUES ('"+fullName+"', '"+emailAddress+"', '"+password+"', '"+saveUserCookie+"')")
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", "getUser.php", false);
-    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-    // var data = {
-    //     name: fullName,
-    //     type: "user"
-    // };
-
-    // var params = Object.keys(data).map(function (key) {
-    //     return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-    // }).join("&");
-
-    // xhr.send(params);
+function registerUser(fullName, emailAddress, password){
+    createUser(fullName, emailAddress, password)
     query("SELECT * FROM `user` WHERE 'fullName'='"+fullName+"'")
 }
 
@@ -125,8 +62,8 @@ function signUp(){
         }
 
         if(!isAlrRegistrated){
-            createUser(firstName + " " + lastName, emailAddress, password, saveCookies)
-            window.alert("Successfully signed in!")
+            registerUser(firstName + " " + lastName, emailAddress, password, saveCookies)
+            window.alert("Successfully signed up!")
 
             if(saveCookies){
                 saveUserCookie()
@@ -155,29 +92,21 @@ function signIn(){
     password = document.getElementById("password").value;
 
     fullName = firstName + " " + lastName;
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", "checkSignIn.php", false);
-    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-    // var data = {
-    //     fullName: fullName,
-    //     emailAddress: emailAddress,
-    //     password: password
-    // };
-
-    // var params = Object.keys(data).map(function (key) {
-    //     return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-    // }).join("&");
-
-    // xhr.send(params);
-
     if(checkSignIn(fullName, emailAddress, password)){
         console.log(getUserByName(fullName)[0])
 
         saveUserCookie(getUserByName(fullName)[0].id);
-        window.alert("Successfully Signed In");
-        window.location.href = "/connectMe";
+        var url = new URL(window.location.href);
+        var from = url.searchParams.get("from");
+        if(from == "explore"){
+            window.location.href = "explore.html"
+        }else if(from == "userSettings"){
+            window.location.href = "userSettings.html"
+        }
+        
+        else{
+            window.location.href ="index.html"
+        }
     }
 }
 

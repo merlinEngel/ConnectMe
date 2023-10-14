@@ -125,7 +125,7 @@ main .right .generalInformationTab .profilePic img{
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    width: 350px;
+    width: 390px;
 }
 
 .right .tabs .myOffersTab .allOffers .offerName{
@@ -133,4 +133,23 @@ main .right .generalInformationTab .profilePic img{
     font-size: 25px;
     margin-left: 10px;
     margin-bottom: 15px;
+}
+
+.right .tabs .myOffersTab .allOffers .chatBtn *{
+    width: 20px;
+    height: 20px;
+}
+
+.right .tabs .myOffersTab .allOffers .chatBtn{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: rgb(176, 176, 176);
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.right .tabs .myOffersTab .allOffers .chatBtn:hover{
+    background: rgb(166, 166, 166);
+    transform: scale(1.01);
 }

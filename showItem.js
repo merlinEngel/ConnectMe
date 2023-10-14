@@ -10,21 +10,6 @@ function getItem(){
         itemType = "requests";
     }
 
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", "getItem.php", false);
-    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-    // var data = {
-    //     id: itemId,
-    //     type: itemType
-    // };
-
-    // var params = Object.keys(data).map(function (key) {
-    //     return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-    // }).join("&");
-
-    // xhr.send(params);
-
     xhr = query("SELECT * FROM "+itemType+" WHERE id='"+itemId+"'")
 
     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -43,11 +28,18 @@ function getItemInformation(){
 }
 
 function showItem(item){
+    console.log(getItemInformation()[1])
+
     document.querySelector('main h3').textContent = item[0].title;
     document.querySelector('main .wrapper .left .userInfo .topLine .userName').textContent = item[0].userName;
     document.querySelector('main .wrapper .right .topContainer .info .description').textContent = item[0].description;
     document.querySelector('main .wrapper .right .lowerContainer .cost .data').textContent = "from " + item[0].price + "$";
-    document.querySelector('main .wrapper .right .lowerContainer .completionTime .data').textContent = item[0].completionTime + " days";
+    if(getItemInformation()[1] == 1){
+        document.querySelector('main .wrapper .right .lowerContainer .completionTime .data').textContent = item[0].completionTime + " days";
+    }else{
+        document.querySelector('main .wrapper .right .lowerContainer .completionTime').style.display = "none";
+        document.querySelector('main .wrapper .right .lowerContainer .avrgRating').style.display = "none";
+    }
 
     var user = getUser(item.userName);
 
@@ -55,25 +47,6 @@ function showItem(item){
 }
 
 function orderItem(){
-    // var xhr = new XMLHttpRequest();
-    // xhr.open("POST", "createOrder.php", false);
-    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    // console.log(parseInt(getItem()[0].id))
-
-    // var data = {
-    //     clientId:getUser()[0]['id'],
-    //     providerId: 1,
-    //     orderId: parseInt(getItem()[0].id),
-    //     isOffer: getItem()[0].isOffer
-    // };
-
-    // var params = Object.keys(data).map(function (key) {
-    //     return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-    // }).join("&");
-
-    // xhr.send(params);
-
     xhr = query("INSERT INTO orders (clientId, providerId, itemId, isOffer) VALUES ('"+getUser()[0]['id']+"', '"+1+"', '"+parseInt(getItem()[0].id)+"', '"+getItem()[0].isOffer+"')")
 
     console.log(xhr.responseText);

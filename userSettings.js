@@ -36,20 +36,6 @@ function containsNonDigits(str) {
 
 function deleteUser(){
     if(window.confirm("Do you really want to delete your account. This cant be undone. All your orders will be canceled")){
-        // var xhr = new XMLHttpRequest();
-        // xhr.open("POST", "deleteUser.php", false);
-        // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        // var data = {
-        //     id:getUser()[0]['id']
-        // };
-
-        // var params = Object.keys(data).map(function (key) {
-        //     return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
-        // }).join("&");
-
-        // xhr.send(params);
-        // console.log(xhr.responseText)
         query("DELETE FROM `user` WHERE id="+getUser()[0]['id']);
 
         window.location.href ="index.html"
@@ -87,7 +73,6 @@ function getAllOrders(){
             orders.push(toJSON(getAllItemsFromTable("orders", " WHERE `itemId`="+offer['id']).responseText))
             if(orders[0][0] != 'K'){
                 renderOffer(offer['title'], orders[0], maxOrdersPerOffer)
-                console.log(orders)
             }
             i+=1;
         }
@@ -127,6 +112,7 @@ function renderOffer(name, orders, maxOrdersPerOffer){
         if(i < maxOrdersPerOffer){
             cloneTwo = document.importNode(templateTwo.content, true);
 
+            cloneTwo.querySelector(".ordersLi").id = order['orderId'];
             cloneTwo.querySelector(".ordersLi").querySelector(".clientName").textContent = getUser(order['clientId'])[0]['fullName']
             cloneTwo.querySelector(".ordersLi").querySelector(".infos .remainingTime").textContent = getRemainingTime(order['orderId']) + " days remaining";
 
@@ -136,8 +122,19 @@ function renderOffer(name, orders, maxOrdersPerOffer){
     });
 
     myList.appendChild(clone);
-    console.log(clone)
 }
+
+function openChat(event){
+    parent = event.target;
+    while(parent.tagName != "LI"){
+        parent = parent.parentNode
+    }
+    id = parseInt(parent.id);
+
+    window.location.href = "chat.html" + "?orderId=" + id;
+}
+
+
 
 generalInfoPage = document.querySelector("main .right .tabs .generalInformationTab");
 myOffersPage = document.querySelector("main .right .tabs .myOffersTab");
@@ -148,7 +145,7 @@ if(getUser() != "Keine Angebote gefunden."){
     showPage(1);
 }
 else{
-    window.location.href ="logIn.html";
+    window.location.href ="logIn.html?from=userSettings";
 }
 
 getAllOrders();

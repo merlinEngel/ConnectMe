@@ -47,3 +47,22 @@ function checkSignIn(fullName, emailAddress, password){
 
     return xhr;
 }
+
+function createUser(fullName, emailAddress, password){
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "createUser.php", false);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+    var data = {
+        fullName: fullName,
+        emailAddress: emailAddress,
+        password: password,
+        saveUserCookie:true
+    };
+
+    var params = Object.keys(data).map(function (key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
+    }).join("&");
+
+    xhr.send(params);
+}

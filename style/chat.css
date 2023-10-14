@@ -1,0 +1,92 @@
+main{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 150px;
+    margin-inline: 300px;
+}
+
+body{
+    overflow-y: hidden;
+}
+
+main .inputArea{
+    position: fixed;
+    bottom: 0px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+input[type=text]{
+    background: #D9D9D9;
+    border-radius: 30px;
+    height: 50px;
+    width: 1000px;
+    padding-inline: 20px;
+    font-size: 17px;
+}
+
+.buttonIcon{
+    height: 40px;
+    width: 40px;
+}
+.buttonIcon *{
+    height: 35px;
+    width: 35px;
+}
+
+.chatArea{
+    align-self: stretch;
+
+    overflow-x: scroll;
+
+    height: 800px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+.chatArea ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.chatArea ul li.clientMsg{
+    display: flex;
+    justify-content: start;
+}
+.chatArea ul li.clientMsg .container{
+    background: #128a33;
+    width: 400px;
+    padding: 10px;
+    border-radius: 16px;
+}
+
+.chatArea ul li.providerMsg{
+    display: flex;
+    justify-content: end;
+}
+.chatArea ul li.providerMsg .container{
+    background: #172678;
+    width: 400px;
+    padding: 10px;
+    border-radius: 16px;
+}
+
+.chatArea ul li .container *{
+    color: white;
+    user-select: text;
+}
+
+.chatArea ul li .container .time{
+    font-size: 10px;
+    margin-top: 5px;
+}

@@ -452,4 +452,9 @@ function openItem(event){
     window.location.href = fullUrl;
 }
 
-createOffer("new Offer", "Merlin Engel", 100, "cO", "This is a example offer")
+if(getUser()[0].id){
+    console.log(document.cookie)
+}
+else{
+    window.location.href = "logIn.html?from=explore"
+}
