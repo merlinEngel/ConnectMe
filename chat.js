@@ -1,7 +1,7 @@
 function getOrder(){
     id = new URL(window.location.href).searchParams.get("orderId");
 
-    order = toJSON(getAllItemsFromTable("orders", " WHERE orderId="+id).responseText)[0];
+    order = toJSON(getAllItemsFromTable("orders", " WHERE id="+id).responseText)[0];
     return order;
 }
 if(getUser()[0]['id'] == getOrder()['clientId'] || getUser()[0]['id'] == getOrder()['providerId']){}
@@ -21,9 +21,8 @@ function isClient(){
 function createMessage(message){
     var client = isClient();
 
-    console.log(message);
-
-    query("INSERT INTO `messages`(`orderId`, `isClient`, `message`) VALUES ('"+getOrder()['orderId']+"','"+client+"','"+message+"')")
+    console.log("INSERT INTO `messages`(`orderId`, `isClient`, `message`) VALUES ('"+getOrder()['id']+"','"+client+"','"+message+"')")
+    console.log(query("INSERT INTO `messages`(`orderId`, `isClient`, `message`) VALUES ('"+getOrder()['id']+"','"+client+"','"+message+"')").responseText)
 }
 
 function sendMessage(){
@@ -38,7 +37,7 @@ function sendMessage(){
 }
 
 function getMessages(){
-    orderId = getOrder()['orderId'];
+    orderId = getOrder()['id'];
 
     messages = toJSON(getAllItemsFromTable("messages", " WHERE orderId="+orderId).responseText);
 
@@ -46,7 +45,6 @@ function getMessages(){
 }
 
 function renderMessages(messages){
-
     var myList = document.querySelector('.chatArea ul');
     for (let i = myList.children.length - 1; i >= 0; i--) {
         const child = myList.children[i];
@@ -71,5 +69,11 @@ function renderMessages(messages){
         myList.appendChild(clone);
     });
 }
+
+window.addEventListener("keydown", function(){
+    if(this.event.key == "Enter"){
+        sendMessage();
+    }
+})
 
 renderMessages(getMessages())

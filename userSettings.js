@@ -81,7 +81,7 @@ function getAllOrders(){
 }
 
 function getRemainingTime(orderId){
-    var order = toJSON(getAllItemsFromTable("orders", " WHERE orderId=" + orderId).responseText)[0];
+    var order = toJSON(getAllItemsFromTable("orders", " WHERE id=" + orderId).responseText)[0];
     var startDate = new Date(order['startTime'])
 
     var offer = toJSON(getAllItemsFromTable("offers", " WHERE id=" + order['itemId']).responseText)[0];
@@ -112,9 +112,9 @@ function renderOffer(name, orders, maxOrdersPerOffer){
         if(i < maxOrdersPerOffer){
             cloneTwo = document.importNode(templateTwo.content, true);
 
-            cloneTwo.querySelector(".ordersLi").id = order['orderId'];
+            cloneTwo.querySelector(".ordersLi").id = order['id'];
             cloneTwo.querySelector(".ordersLi").querySelector(".clientName").textContent = getUser(order['clientId'])[0]['fullName']
-            cloneTwo.querySelector(".ordersLi").querySelector(".infos .remainingTime").textContent = getRemainingTime(order['orderId']) + " days remaining";
+            cloneTwo.querySelector(".ordersLi").querySelector(".infos .remainingTime").textContent = getRemainingTime(order['id']) + " days remaining";
 
             myListTwo.appendChild(cloneTwo);
             i+=1
@@ -131,7 +131,7 @@ function openChat(event){
     }
     id = parseInt(parent.id);
 
-    window.location.href = "chat.html" + "?orderId=" + id;
+    window.location.href = "chat.html"+"?orderId="+id;
 }
 
 

@@ -26,19 +26,19 @@ main .mainSection{
 
 main .mainSection .buttons{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 main .mainSection .buttons div{
-    width: 250px;
+    width: 220px;
     display: flex;
     font-weight: 400;
     font-size: 27px;
 }
 
-main .mainSection p{
+main .mainSection p.fieldHeader {
     font-weight: 500;
     margin-left: 10px;
     font-size: 20px;
@@ -83,4 +83,8 @@ input[type=text], input[type=password]{
     right: 8%;
     cursor: pointer;
     color: gray;
+}
+
+.textButton{
+    font-size: 20px;
 }

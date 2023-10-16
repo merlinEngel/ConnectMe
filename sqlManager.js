@@ -28,13 +28,12 @@ function getAllItemsFromTable(table, condition){
     return query("SELECT * FROM `"+table+"`"+condition);
 }
 
-function checkSignIn(fullName, emailAddress, password){
+function checkSignIn(emailAddress, password){
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "checkSignIn.php", false);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         
     var data = {
-        fullName: fullName,
         emailAddress: emailAddress,
         password: password
     };

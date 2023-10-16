@@ -63,44 +63,24 @@ const prices = [
   130.00, 24.75, 94.50, 50.95, 85.00, 27.25, 75.99, 31.50, 140.00, 63.99];
 
 
-const categories = [
-    "Graphics & Design",
-    "Programming & Tech",
-    "Digital Marketing",
-    "Video & Animation",
-    "Writing & Translation",
-    "Music & Audio",
-    "Business",
-    "Data",
-    "Photography",
-    "AI Services",
-    "Logo Design",
-    "Website Development",
-    "Voiceover",
-    "Game Design",
-    "Life Coaching",
-    "Marketing"];
+const categories = toJSON(getAllItemsFromTable("categories").responseText);
 
-
-
-
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 10000; i++) {
     
         const serviceName = serviceNames[i % serviceNames.length];
         const price = prices[i % prices.length];
         const categorie = categories[i % categories.length];
     
-        if(i%2 == 0){
-            createOffer(serviceName, "Merlin Engel", price, categoryToShortcode(categorie), "None");
-        }else{
-            createRequest(serviceName, "Merlin Engel", price, categoryToShortcode(categorie), "None");
-        }
+        // if(i%2 == 0){
+        //     createOffer(serviceName, "Merlin Engel", price, getCategory(categorie)["short"], "None");
+        // }else{
+        //     createRequest(serviceName, "Merlin Engel", price, getCategory(categorie)["short"], "None");
+        // }
 }
 //#endregion
 var requestsPerPage = 50;
 var currentPage = 1;
 var pageText = document.querySelector('.pageText')
-updatePage();
 
 function nextPage(){
     if(currentPage + 1 <= filterItems(getAllOffersFromDb(), getAllRequestsFromDb()).length/requestsPerPage){
@@ -147,7 +127,7 @@ function renderList(items){
             clone.querySelector('li').querySelector('.details .name').textContent = items[i].title;
             clone.querySelector('li').querySelector('.details .user').textContent = items[i].userName;
             clone.querySelector('li').querySelector('.details .price').textContent = items[i].price + "$";
-            clone.querySelector('li').querySelector('.category p').textContent = shortcodeToCategory(items[i].categoryShort);
+            clone.querySelector('li').querySelector('.category p').textContent = getCategory(items[i].categoryShort)["fullName"];
             clone.querySelector('li').setAttribute('id', items[i].id);
             clone.querySelector('li').querySelector('.requestOfferIcon').setAttribute('id', items[i].isOffer);
         
@@ -210,7 +190,7 @@ function filterList(items, type){
         var category = item.categoryShort;
 
         var isSelectedCategory = false;
-        getSelectedCategories().forEach(crntCategory =>{
+            getSelectedCategories().forEach(crntCategory =>{
 
             if(crntCategory.replace(/\s/g,'').toLowerCase() == category.replace(/\s/g,'').toLowerCase()){
                 isSelectedCategory = true;
@@ -315,84 +295,32 @@ function getSelectedTypes(){
     })
 
     return returnCBs;
+}   
+
+function getCategory(string){
+    if(string[0] == "c"){
+        return toJSON(getAllItemsFromTable("categories", " WHERE short='"+string+"'").responseText)[0]
+    }else{
+        return toJSON(getAllItemsFromTable("categories", " WHERE fullName='"+string+"'").responseText)
+    }
 }
 
-function categoryToShortcode(string){
-    switch (string.replace(/\s/g,'').toLowerCase()){
-        case "graphics&design":
-            return "cGaD";
-        case "programming&tech":
-            return "cPaT";
-        case "digitalmarketing":
-            return "cDM";
-        case "video&animation":
-            return "cVaA";
-        case "writing&translation":
-            return "cWaT";
-        case "music&audio":
-            return "cMaA";
-        case "business":
-            return "cBu";
-        case "data":
-            return "cDa";
-        case "photography":
-            return "cPh";
-        case "aiservices":
-            return "cAiS";
-        case "logodesign":
-            return "cLG";
-        case "websitedevelopment":
-            return "cWD";
-        case "voiceover":
-            return "cVo";
-        case "gamedesign":
-            return "cGCD";
-        case "lifecoaching":
-            return "cLC";
-        case "marketing":
-            return "cMA";
+function initCategoryList(){
+    var categories = toJSON(getAllItemsFromTable("categories").responseText);
+    var categoryList = document.querySelector("#categoryList");
 
-        default:
-            return "cOTHER"
-    }}
-function shortcodeToCategory(string){
-    switch (string.toLowerCase()){
-        case "cgad":
-            return "Graphics & Design"
-        case "cpat":
-            return "Programming & Tech";
-        case "cdm":
-            return "Digital Marketing";
-        case "cvaa":
-            return "Video & Animation";
-        case "cwat":
-            return "Writing & Translation";
-        case "cmaa":
-            return "Music & Audio";
-        case "cbu":
-            return "Business";
-        case "cda":
-            return "Data";
-        case "cph":
-            return "Photography";
-        case "cais":
-            return "AI Services";
-        case "clg":
-            return "Logo Design";
-        case "cwd":
-            return "Web Development";
-        case "cvo":
-            return "Voiceover";
-        case "cgcd":
-            return "Game Design";
-        case "clc":
-            return "Life Coaching";
-        case "cma":
-            return "Marketing";
+    var template = categoryList.querySelector("template");
+
+    console.log(categories)
+    categories.forEach(element =>{
+        var clone = document.importNode(template.content, true);
         
-        default:
-            return "Other"
-        }}
+        clone.querySelector("li.categoryCheckBox p").textContent = element["fullName"];
+        clone.querySelector("li.categoryCheckBox input").name = element["short"]
+
+        categoryList.appendChild(clone  )
+    })
+}
 
 function createOffer(title, user, price, categoryShort, description) {
     createItem("offers", title, user, price, categoryShort, description)
@@ -452,9 +380,10 @@ function openItem(event){
     window.location.href = fullUrl;
 }
 
-if(getUser()[0].id){
-    console.log(document.cookie)
-}
+if(getUser()[0].id){}
 else{
     window.location.href = "logIn.html?from=explore"
 }
+
+initCategoryList();
+updatePage();

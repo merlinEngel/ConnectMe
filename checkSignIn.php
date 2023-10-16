@@ -14,7 +14,7 @@ $fullName = $_POST['fullName'];
 $emailAddress = $_POST['emailAddress'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM user WHERE fullName = '$fullName' AND emailAddress = '$emailAddress'";
+$sql = "SELECT * FROM user WHERE emailAddress = '$emailAddress'";
 
 $result = $conn->query($sql);
 

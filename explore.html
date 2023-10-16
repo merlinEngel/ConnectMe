@@ -67,9 +67,12 @@
             <div class="categorySection">
                 <p class="filterSectionHeader">Category</p>
                 
-                <li class="categoryCheckBox" style="margin-bottom: 10px; margin-top: 20px;"><input type="checkbox" onchange="checkFilterUpdate()" checked="true" name="cAll">Select All</li>
-                <ul>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cGaD">Graphics & Design</li>
+                <li class="categoryCheckBox checkAllCategories" style="margin-bottom: 10px; margin-top: 20px;"><input type="checkbox" onchange="checkFilterUpdate()" checked="true" name="cAll">Select All</li>
+                <ul id="categoryList">
+                    <template>
+                        <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cO"><p></p></li>
+                    </template>
+                    <!-- <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cGaD">Graphics & Design</li>
                     <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cPaT">Programming & Tech</li>
                     <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cDM">Digital Marketing</li>
                     <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cVaA">Video & Animation</li>
@@ -84,7 +87,7 @@
                     <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cVo">Voiceover</li>
                     <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cGCD">Game Concept Design</li>
                     <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cLC">Life Coaching</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cMA">Marketing</li>
+                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cMA">Marketing</li> -->
                     
                 </ul>
             </div>

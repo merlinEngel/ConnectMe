@@ -1,18 +1,18 @@
-y<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/chat.css">
-    <link rel="stylesheet" href="style/mainStyle.css">
+    <link rel="stylesheet" href="style/createOffer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style/mainStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="app.js" defer></script>
     <script src="sqlManager.js" defer></script>
     <script src="userControl.js" defer></script>
-    <script src="chat.js" defer></script>
-    <title>Chat | Connect Me</title>
+    <script src="app.js" defer></script>
+    <script src="requestManager.js" defer></script>
+    <title>Create new offer | Connect.Me</title>
 </head>
 <body>
     <header class="header">
@@ -36,44 +36,54 @@ y<!DOCTYPE html>
         </div>
     </header>
 
+<div class="wrapper">
+    <h2>Create a new Offer</h2>
+
     <main>
-        <div class="chatArea">
-            <ul>
-                <template id="client">
-                    <li class="clientMsg">
-                        <div class="container">
-                            <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum autem non ipsum velit cumque consectetur debitis possimus architecto, eius vitae?</p>
-                            <p class="time"></p>
-                        </div>
-                    </li>
-                </template>
-
-                <template id="provider">
-                    <li class="providerMsg">
-                        <div class="container">
-                            <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum autem non ipsum velit cumque consectetur debitis possimus architecto, eius vitae? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia asperiores cupiditate, corrupti, deserunt molestias quia repellat ipsum velit, ea rerum vitae sed culpa minima tempore aperiam similique libero sequi ipsa. Et eum voluptatem nesciunt deserunt odio sed enim, repudiandae dolor dicta quia, dolores dolore cumque dolorem voluptas fugit explicabo. Rem eaque exercitationem incidunt distinctio temporibus deleniti facere perspiciatis quia, minima dignissimos omnis quaerat magnam fugit, possimus praesentium sapiente voluptate aut? Iusto, laudantium nobis neque, quas eius officiis sit illum eum voluptatem, voluptatibus temporibus repellendus inventore iste odit? In, doloremque. Iusto porro voluptatibus eveniet necessitatibus impedit beatae, similique voluptate architecto nam?</p>
-                            <p class="time"></p>
-                        </div>
-                    </li>
-                </template>
-            </ul>
-        </div>
-        <div class="inputArea">
-            <input class="messageInput" name="message" placeholder="Enter message..." type="text">
-            <div class="attachFilesBtn buttonIcon">
-                <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.4019 4.51273e-05C36.1652 0.00577945 46.5097 10.3538 46.5097 23.1179C46.5097 29.4967 43.9263 35.2721 39.7486 39.4548L39.7488 39.4546C35.539 43.8104 29.6442 46.5147 23.1179 46.5147C10.3502 46.5147 0 36.1645 0 23.3968C0 16.8731 2.70226 10.9805 7.04856 6.77725L7.05502 6.77101C11.2153 2.58844 16.9748 0 23.3387 0H23.4054H23.4019L23.4019 4.51273e-05ZM23.4019 43.1534C34.4672 43.1534 43.4374 34.1832 43.4374 23.1179C43.4374 12.0526 34.4672 3.08245 23.4019 3.08245C12.3366 3.08245 3.36641 12.0526 3.36641 23.1179C3.37928 34.178 12.3417 43.1406 23.4006 43.1534H23.4019ZM35.1767 24.6591H11.6271V21.5768H35.1767V24.6591ZM24.943 34.8927H21.8606V11.3433H24.943V34.8927Z" fill="black"/>
-                </svg>
+        <div class="section section1">
+            <div class="offerNameField field">
+                <p class="fieldHeader">Offer Name</p>
+                <input type="text" name="offerName" id="offerName" placeholder="Offer name...">
             </div>
-            <div class="sendMessageBtn buttonIcon" onclick="sendMessage()">
-                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.7269 35.2857H13.7479C5.91596 35.2857 2 33.3277 2 23.5378V13.7479C2 5.91596 5.91596 2 13.7479 2H29.4117C37.2436 2 41.1596 5.91596 41.1596 13.7479V23.5378C41.1596 31.3697 37.2436 35.2857 29.4117 35.2857H28.4327C27.8258 35.2857 27.2384 35.5794 26.8664 36.0689L23.9294 39.9848C22.6371 41.7078 20.5225 41.7078 19.2302 39.9848L16.2933 36.0689C15.98 35.6381 15.2555 35.2857 14.7269 35.2857Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M29.4053 19.6219H29.4227" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M21.5713 19.6219H21.5889" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M13.7373 19.6219H13.7549" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
 
+            <div class="priceField field">
+                <p class="fieldHeader">Price</p>
+                <input type="text" name="price" id="price" placeholder="Price...">
+            </div>
+
+            <div class="descriptionField field">
+                <p class="fieldHeader">Description</p>
+                <textarea name="description" id="description" placeholder="What are you offering..."></textarea>
+            </div>
+        </div>
+        <div class="seperator"></div>
+        <div class="section section2">
+            <div class="categoryField field">
+                <p class="fieldHeader">Category</p>
+                <!-- Category Dropdown -->
+                <select name="category" id="categoryDropdown">
+
+                </select>
+            </div>
+
+            <div class="subcategoryField field">
+                <p class="fieldHeader">Subcategory</p>
+                <input type="text" name="subcategory" id="subcategory" placeholder="Subcategory...">
+            </div>
+
+            <div class="keywordsField field">
+                <p class="fieldHeader">Keywords</p>
+                <input type="text" name="keywords" id="keywords" placeholder="keyword1; keyword2; keyword3...">
+            </div>
+        </div>
+        <div class="seperator"></div>
+        <div class="section section3">
+            <div class="featuresField field">
+                <p class="fieldHeader">Features</p>
+                <ul class="featureList"></ul>
             </div>
         </div>
     </main>
+</div>
 </body>
+</html>

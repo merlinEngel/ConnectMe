@@ -29,7 +29,8 @@ function getUserByName(name){
     return toJSON(query("SELECT * FROM `user` WHERE fullName='"+name+"'").responseText);
 }
 function getUserByEmail(email){
-    return toJSON(query("SELECT * FROM `user` WHERE emailAddress="+email).responseText);
+    console.log(query("SELECT * FROM `user` WHERE emailAddress="+email).responseText)
+    return toJSON(query("SELECT * FROM `user` WHERE emailAddress='"+email+"'").responseText);
 }
 function removeUserCookie(){
     document.cookie = "userId=;"
@@ -41,10 +42,10 @@ function registerUser(fullName, emailAddress, password){
 
 
 function signUp(){
-    firstName = document.getElementById("firstName").value;
-    lastName = document.getElementById("lastName").value;
-    emailAddress = document.getElementById("emailAddress").value.replace(" ", "");
-    password = document.getElementById("password").value;
+    firstName = document.querySelector(".signUpSection #firstName").value;
+    lastName = document.querySelector(".signUpSection #lastName").value;
+    emailAddress = document.querySelector(".signUpSection #emailAddress").value.replace(" ", "");
+    password = document.querySelector(".signUpSection #password").value;
 
     saveCookies = true;
 
@@ -86,16 +87,11 @@ function signUpLocal(){
 
 
 function signIn(){
-    firstName = document.getElementById("firstName").value;
-    lastName = document.getElementById("lastName").value;
-    emailAddress = document.getElementById("emailAddress").value.replace(" ", "");
-    password = document.getElementById("password").value;
-
-    fullName = firstName + " " + lastName;
-    if(checkSignIn(fullName, emailAddress, password)){
-        console.log(getUserByName(fullName)[0])
-
-        saveUserCookie(getUserByName(fullName)[0].id);
+    emailAddress = document.querySelector(".signInSection #emailAddress2").value.replace(" ", "");
+    password = document.querySelector(".signInSection #password2").value;
+    if(checkSignIn(emailAddress, password)){
+        console.log(getUserByEmail(emailAddress)[0])
+        saveUserCookie(getUserByEmail(emailAddress)[0].id);
         var url = new URL(window.location.href);
         var from = url.searchParams.get("from");
         if(from == "explore"){
@@ -113,4 +109,4 @@ function signIn(){
 function logOut(){
     removeUserCookie();
     window.location.href = "index.html"
-}
+}    

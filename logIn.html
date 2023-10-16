@@ -12,6 +12,7 @@
     <script src="sqlManager.js" defer></script>
     <script src="app.js" defer></script>
     <script src="userControl.js" defer></script>
+    <script src="logIn.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -44,24 +45,24 @@
             </svg>
         </div>
 
-        <div class="mainSection">
+        <div class="mainSection signUpSection">
             <div class="inputFields">
                 <div class="nameFields">
             <div class="firstName input">
-                <p>First Name</p>
+                <p class="fieldHeader">First Name</p>
                 <input type="text" name="firstName" id="firstName" placeholder="First name...">
             </div>
             <div class="lastName input">
-                <p>Last Name</p>
+                <p class="fieldHeader">Last Name</p>
                 <input type="text" name="lastName" id="lastName" placeholder="Last name...">
             </div>
             </div>
             <div class="emailAddress input">
-                <p>Email Address</p>
+                <p class="fieldHeader">Email Address</p>
                 <input type="text" name="emailAddress" id="emailAddress" placeholder="Email address...">
             </div>
             <div class="password input">
-                <p>Password</p>
+                <p class="fieldHeader">Password</p>
                 <div class="field">
                     <input type="password"  name="password" id="password" placeholder="Password...">
                     <i class="fa-solid fa-eye" id="eye"></i>
@@ -71,7 +72,27 @@
 
             <div class="buttons">
                 <div class="signUpBtn button" onclick="signUpLocal()">Sign Up</div>
+                <p class="textButton" onclick="switchDisplay()">Log in to existing account</p>
+            </div>
+        </div>
+        <div class="mainSection signInSection">
+            <div class="inputFields">   
+            <div class="emailAddress input">
+                <p class="fieldHeader">Email Address</p>
+                <input type="text" name="emailAddress" id="emailAddress2" placeholder="Email address...">
+            </div>
+            <div class="password input">
+                <p class="fieldHeader">Password</p>
+                <div class="field">
+                    <input type="password"  name="password" id="password2" placeholder="Password...">
+                    <i class="fa-solid fa-eye" id="eye"></i>
+                </div>
+            </div>
+            </div>
+
+            <div class="buttons">
                 <div class="signInBtn button" onclick="signInLocal()">Sign In</div>
+                <p class="textButton" onclick="switchDisplay()">Create new account</p>
             </div>
         </div>
     </main>

@@ -1,0 +1,52 @@
+.wrapper{
+    margin-inline:200px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+h2{
+    font-size: 30px;
+    margin-block: 30px;
+}
+
+input[type=text], textarea{
+    border: 1px solid black;
+    border-radius: 12px;
+    height:40px;
+    padding-inline: 10px;
+    width: 300px;
+    flex-grow: 1;
+    resize: vertical;
+}
+
+textarea{
+    height: 200px;
+    padding-top: 10px;
+}
+
+.fieldHeader{
+    font-weight: 500;
+    width:30vw
+}
+
+.field{
+    display: flex;
+    margin-block: 10px;
+    align-items: center;
+}
+
+.descriptionField{
+    align-items: start;
+}
+
+
+.seperator{
+    height: 1px;
+    margin-block: 20px;
+    margin-inline: 50px;
+    background: #969696;
+    align-self: stretch;
+}

@@ -94,3 +94,12 @@ html{
 .buttonIcon:hover{
     background: #e2e2e2;
 }
+
+.textButton{
+    text-decoration: underline;
+    cursor: pointer;
+    color: rgb(87, 87, 87);
+}
+.textButton:hover{
+    color: #3a9dc9;
+}
