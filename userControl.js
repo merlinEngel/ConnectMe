@@ -38,7 +38,6 @@ function removeUserCookie(){
 }
 function registerUser(fullName, emailAddress, password){
     createUser(fullName, emailAddress, password)
-    query("SELECT * FROM `user` WHERE 'fullName'='"+fullName+"'")
 }
 
 
@@ -72,6 +71,9 @@ function signUp(){
             }
         }
     }
+
+    signIn(emailAddress, password)
+    query("UPDATE `user` SET 'uuid='"+getUUID(getUser().id) + "' WHERE 'id'="+getUser().id);
 }
 
 function isValidEmail(string) {
@@ -87,9 +89,12 @@ function signUpLocal(){
 }
 
 
-function signIn(){
-    emailAddress = document.querySelector(".signInSection #emailAddress2").value.replace(" ", "");
-    password = document.querySelector(".signInSection #password2").value;
+function signIn(emailAddress, password){
+    if(!emailAddress)
+        emailAddress = document.querySelector(".signInSection #emailAddress2").value.replace(" ", "");
+
+    if(!password)
+        password = document.querySelector(".signInSection #password2").value;
     if(checkSignIn(emailAddress, password)){
         console.log(getUserByEmail(emailAddress)[0])
         saveUserCookie(getUserByEmail(emailAddress)[0].id);
@@ -136,4 +141,3 @@ function getQeuedOrders(id){
     console.log(orders);
     return orders.length;
 }
-

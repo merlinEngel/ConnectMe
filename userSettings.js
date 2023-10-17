@@ -70,7 +70,6 @@ function getAllOrders(){
     offers.forEach(offer => {
         if(i < maxOffers){
             orders = []
-            console.log("WHERE `itemId`="+offer['id']+" AND providerId='"+user["id"]+"'")
             orders.push(toJSON(getAllItemsFromTable("orders", " WHERE `itemId`="+offer['id']+" AND providerId='"+user["id"]+"'").responseText))
             if(orders[0][0] != 'K'){
                 renderOffer(offer['title'], orders[0], maxOrdersPerOffer)
@@ -148,4 +147,14 @@ else{
     window.location.href ="logIn.html?from=userSettings";
 }
 
+var profilePicInput = document.querySelector(".generalInformationTab .profilePic input#profilePic");
+profilePicInput.addEventListener("change", function() {
+    var dateiInput = profilePicInput;
+    var datei = dateiInput.files[0];
+
+    console.log(uploadFile(datei, "files/userData/"));
+});
+
 getAllOrders();
+console.log("UPDATE `user` SET 'uuid'='"+getUUID(getUser().id) + "' WHERE 'id'="+getUser().id)
+console.log(query("UPDATE `user` SET `uuid`='"+getUUID(getUser().id) + "' WHERE `id`="+getUser().id).responseText);

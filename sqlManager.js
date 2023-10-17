@@ -54,7 +54,7 @@ function checkSignIn(emailAddress, password){
 
 function createUser(fullName, emailAddress, password){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "PHP/createUser.php", false);
+    xhr.open("POST", "PHP/createUser.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         
     var data = {
@@ -73,7 +73,7 @@ function createUser(fullName, emailAddress, password){
 
 function addUserRating(id, rating){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "PHP/addUserRating.php", false);
+    xhr.open("POST", "PHP/addUserRating.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         
     var data = {
@@ -104,4 +104,17 @@ function getUserRatings(id){
     xhr.send(params);
 
     return xhr.responseText;
+}
+
+
+
+
+function getUUID(seed) {
+    const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+
+    return uuid.replace('4', seed % 16);
 }
