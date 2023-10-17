@@ -28,8 +28,6 @@ function getItemInformation(){
 }
 
 function showItem(item){
-    console.log(getItemInformation()[1])
-
     document.querySelector('main h3').textContent = item[0].title;
     document.querySelector('main .wrapper .left .userInfo .topLine .userName').textContent = item[0].userName;
     document.querySelector('main .wrapper .right .topContainer .info .description').textContent = item[0].description;
@@ -44,6 +42,32 @@ function showItem(item){
     var user = getUser(item.userName);
 
     document.querySelector('main .wrapper .left .userInfo .topLine .userName').textContent = user.fullName;
+    document.querySelector('main .wrapper .left .userInfo .description').textContent = user.description;
+    document.querySelector('main .wrapper .left .userInfo .topLine .queuedOrders').textContent = getQeuedOrders(user.id) + " Orders in Queue";
+
+    var ratingList = document.querySelector(".rating ul");
+    var fullStar = document.querySelector(".rating template.fullStar");
+    var halfStar = document.querySelector(".rating template.halfStar");
+    var emptyStar = document.querySelector(".rating template.emptyStar");
+
+    var renderedStars = 0;
+    var averageRating = getAverageRating(user.id);
+    const maxStars = 5;
+
+    for(let i = averageRating; i > .5; i--){
+        renderedStars++;
+        ratingList.appendChild(document.importNode(fullStar.content, true));
+    }
+    console.log(averageRating)
+    if(averageRating - renderedStars > 0){
+        ratingList.appendChild(document.importNode(halfStar.content, true));
+        renderedStars++;
+    }
+    if(renderedStars < maxStars){
+        for(let i = renderedStars; i < maxStars; i++){
+            ratingList.appendChild(document.importNode(emptyStar.content, true));
+        }
+    }
 }
 
 function orderItem(){

@@ -1,10 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "connectme";
-
-$conn = new mysqli($servername, $username, $password, $databaseName);
+include  "config.php";
+$conn = $_SESSION['sqlConn'];
 
 $sql = $_POST['sql'];
 

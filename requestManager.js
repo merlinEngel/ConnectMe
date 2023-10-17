@@ -104,6 +104,10 @@ function updatePage(){
 function renderList(items){
     var currentPage = this.currentPage;
     var requestsPerPage = this.requestsPerPage;
+
+    if(items.length == 0){
+        document.querySelector(".notFoundSection").style.display = ""
+    }
     
     if (currentPage < 1){
         x = 0
@@ -171,6 +175,7 @@ function filterList(items, type){
     var typesSelected = getSelectedTypes();
     var showOffers = false;
     var showRequests = false;
+    var selectedCategories = getSelectedCategories();
     if(typesSelected.includes("tR")) showRequests = true;
     if(typesSelected.includes("tO")) showOffers = true;
 
@@ -190,7 +195,7 @@ function filterList(items, type){
         var category = item.categoryShort;
 
         var isSelectedCategory = false;
-            getSelectedCategories().forEach(crntCategory =>{
+            selectedCategories.forEach(crntCategory =>{
 
             if(crntCategory.replace(/\s/g,'').toLowerCase() == category.replace(/\s/g,'').toLowerCase()){
                 isSelectedCategory = true;
@@ -270,16 +275,16 @@ function getSelectedCategories(){
     var returnCBs = [];
 
     checkBoxes.forEach(cb =>{
-        if(cb.name == "cAll" && cb.checked){
-            allSelected = true;
-        }
-        else if(allSelected){
-            returnCBs.push(cb.name);
-        }
-        else if(cb.checked){
+        if(cb.checked){
             returnCBs.push(cb.name);
         }
     });
+
+    console.log(returnCBs.length)
+
+    if(returnCBs.length < 1){
+        checkBoxes.forEach(element => {returnCBs.push(element.name)})
+    }
 
     return returnCBs;
 }

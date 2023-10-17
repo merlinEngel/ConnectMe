@@ -52,8 +52,6 @@
         </div>
     </div>
     <main>
-        <!-- style="left: 0vw; width: 0vw;" -->
-        <!-- style="opacity: 0" -->
         <div class="filterSection">
             <div class="priceSection">
                 <p class="filterSectionHeader">Price</p>
@@ -67,28 +65,10 @@
             <div class="categorySection">
                 <p class="filterSectionHeader">Category</p>
                 
-                <li class="categoryCheckBox checkAllCategories" style="margin-bottom: 10px; margin-top: 20px;"><input type="checkbox" onchange="checkFilterUpdate()" checked="true" name="cAll">Select All</li>
                 <ul id="categoryList">
                     <template>
                         <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cO"><p></p></li>
-                    </template>
-                    <!-- <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cGaD">Graphics & Design</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cPaT">Programming & Tech</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cDM">Digital Marketing</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cVaA">Video & Animation</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cWaT">Writing & Translation</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cMaA">Music & Audio</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cBu">Business</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cDa">Data</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cPh">Photography</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cAiS">AI Services</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cLG">Logo Design</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cWD">Website Development</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cVo">Voiceover</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cGCD">Game Concept Design</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cLC">Life Coaching</li>
-                    <li class="categoryCheckBox"><input type="checkbox" onchange="checkFilterUpdate()" name="cMA">Marketing</li> -->
-                    
+                    </template>                    
                 </ul>
             </div>
             <div class="typeSection">
@@ -126,6 +106,9 @@
                     </li>
                 </template>
             </ul>
+            <div class="notFoundSection"  style="display: none;">
+                <p>It seems like your filter is filtering too good and theres nothing left!</p>
+            </div>
             
             <div class="pageButtons">
                 <svg viewBox="0 0 24 24" fill="none" class="pageButton nextPage" onclick="lastPage()">

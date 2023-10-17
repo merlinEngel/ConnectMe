@@ -1,6 +1,6 @@
 function query(sql){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "executeSql.php", false);
+    xhr.open("POST", "PHP/executeSql.php", false);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     var data = {
@@ -15,22 +15,27 @@ function query(sql){
     return xhr;
 }
 
-function toJSON(xhr){
+function toJSON(xhr, returnArray=false){
     try{
         return JSON.parse(xhr);
     }catch{
-        return "Keine Angebote gefunden."
+        if(returnArray){
+            return [];
+        }else{
+            return "Keine Angebote gefunden."
+        }
     }
 }
 
 function getAllItemsFromTable(table, condition){
     if(!condition){condition = "";}
-    return query("SELECT * FROM `"+table+"`"+condition);
+    var sql = "SELECT * FROM `"+table+"`"+condition;
+    return query(sql);
 }
 
 function checkSignIn(emailAddress, password){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "checkSignIn.php", false);
+    xhr.open("POST", "PHP/checkSignIn.php", false);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         
     var data = {
@@ -49,7 +54,7 @@ function checkSignIn(emailAddress, password){
 
 function createUser(fullName, emailAddress, password){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "createUser.php", false);
+    xhr.open("POST", "PHP/createUser.php", false);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         
     var data = {
@@ -64,4 +69,39 @@ function createUser(fullName, emailAddress, password){
     }).join("&");
 
     xhr.send(params);
+}
+
+function addUserRating(id, rating){
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "PHP/addUserRating.php", false);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+    var data = {
+        id:id,
+        rating:rating
+    };
+
+    var params = Object.keys(data).map(function (key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
+    }).join("&");
+
+    xhr.send(params);
+}
+
+function getUserRatings(id){
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "PHP/getUserRatings.php", false);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+    var data = {
+        id:id
+    };
+
+    var params = Object.keys(data).map(function (key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
+    }).join("&");
+
+    xhr.send(params);
+
+    return xhr.responseText;
 }

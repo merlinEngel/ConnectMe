@@ -1,14 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "connectme";
-
-$conn = new mysqli($servername, $username, $password, $databaseName);
-
-if ($conn->connect_error) {
-    die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);
-}
+include  "config.php";
+$conn = $_SESSION['sqlConn'];
 
 $fullName = $_POST['fullName'];
 $emailAddress = $_POST['emailAddress'];

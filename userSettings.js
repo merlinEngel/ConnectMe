@@ -1,5 +1,5 @@
 function loadUI(){
-    user = getUser()[0];
+    user = getUser();
 
     document.querySelector(".generalInformationTab .nameField input").value = user['fullName'];
     document.querySelector(".generalInformationTab .emailField input").value = user['emailAddress'];
@@ -62,7 +62,7 @@ function hideAllPages(){
 function getAllOrders(){
     var maxOffers = 20;
     var maxOrdersPerOffer = 10
-    user = getUser()[0];
+    user = getUser();
 
     offers = toJSON(getAllItemsFromTable("offers", " WHERE userName='" + user['fullName'] + "'").responseText)
     
@@ -70,7 +70,8 @@ function getAllOrders(){
     offers.forEach(offer => {
         if(i < maxOffers){
             orders = []
-            orders.push(toJSON(getAllItemsFromTable("orders", " WHERE `itemId`="+offer['id']).responseText))
+            console.log("WHERE `itemId`="+offer['id']+" AND providerId='"+user["id"]+"'")
+            orders.push(toJSON(getAllItemsFromTable("orders", " WHERE `itemId`="+offer['id']+" AND providerId='"+user["id"]+"'").responseText))
             if(orders[0][0] != 'K'){
                 renderOffer(offer['title'], orders[0], maxOrdersPerOffer)
             }
@@ -113,7 +114,7 @@ function renderOffer(name, orders, maxOrdersPerOffer){
             cloneTwo = document.importNode(templateTwo.content, true);
 
             cloneTwo.querySelector(".ordersLi").id = order['id'];
-            cloneTwo.querySelector(".ordersLi").querySelector(".clientName").textContent = getUser(order['clientId'])[0]['fullName']
+            cloneTwo.querySelector(".ordersLi").querySelector(".clientName").textContent = getUser(order['clientId'])['fullName']
             cloneTwo.querySelector(".ordersLi").querySelector(".infos .remainingTime").textContent = getRemainingTime(order['id']) + " days remaining";
 
             myListTwo.appendChild(cloneTwo);
@@ -142,7 +143,6 @@ generalInfoPageHeader = document.querySelector("main .left .tabList #generalInfo
 myOffersPageHeader = document.querySelector("main .left .tabList #myOffersHeader");
 if(getUser() != "Keine Angebote gefunden."){
     loadUI();
-    showPage(1);
 }
 else{
     window.location.href ="logIn.html?from=userSettings";

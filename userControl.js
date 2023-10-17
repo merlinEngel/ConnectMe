@@ -1,4 +1,5 @@
 function saveUserCookie(id, exDays){
+    console.log(id)
     expires = "";
     if(exDays){
         date = new Date();
@@ -23,7 +24,7 @@ function getUser(id){
     if(id){
         userId = id;
     }
-    return toJSON(query("SELECT * FROM `user` WHERE id=" + userId).responseText);
+    return toJSON(query("SELECT * FROM `user` WHERE id=" + userId).responseText)[0];
 }
 function getUserByName(name){
     return toJSON(query("SELECT * FROM `user` WHERE fullName='"+name+"'").responseText);
@@ -109,4 +110,30 @@ function signIn(){
 function logOut(){
     removeUserCookie();
     window.location.href = "index.html"
-}    
+}
+
+function getAverageRating(id){
+    var ratings = toJSON(getUserRatings(id), true);
+    if(ratings.length == 0) return 0;
+    else{
+        var ratingSum = 0;
+        var ratingAmount = ratings.length;
+        ratings.forEach(element =>{
+            var rating = parseInt(element);
+            if(!rating){
+                rating = 0;
+                ratingAmount -= 1;
+            }
+            ratingSum+=rating;
+        });
+        var averageRating = ratingSum/ratingAmount;
+        return Math.round(averageRating * 2) / 2;;
+    }
+}
+
+function getQeuedOrders(id){
+    var orders = toJSON(getAllItemsFromTable("orders", " WHERE providerId="+id).responseText, true)
+    console.log(orders);
+    return orders.length;
+}
+
