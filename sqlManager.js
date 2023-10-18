@@ -30,7 +30,7 @@ function toJSON(xhr, returnArray=false){
 function getAllItemsFromTable(table, condition){
     if(!condition){condition = "";}
     var sql = "SELECT * FROM `"+table+"`"+condition;
-    return query(sql);
+        return query(sql);
 }
 
 function checkSignIn(emailAddress, password){

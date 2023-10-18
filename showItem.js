@@ -28,6 +28,8 @@ function getItemInformation(){
 }
 
 function showItem(item){
+    var user = getUser(item.userName);
+
     document.querySelector('main h3').textContent = item[0].title;
     document.querySelector('main .wrapper .left .userInfo .topLine .userName').textContent = item[0].userName;
     document.querySelector('main .wrapper .right .topContainer .info .description').textContent = item[0].description;
@@ -38,8 +40,6 @@ function showItem(item){
         document.querySelector('main .wrapper .right .lowerContainer .completionTime').style.display = "none";
         document.querySelector('main .wrapper .right .lowerContainer .avrgRating').style.display = "none";
     }
-
-    var user = getUser(item.userName);
 
     document.querySelector('main .wrapper .left .userInfo .topLine .userName').textContent = user.fullName;
     document.querySelector('main .wrapper .left .userInfo .description').textContent = user.description;
@@ -58,7 +58,6 @@ function showItem(item){
         renderedStars++;
         ratingList.appendChild(document.importNode(fullStar.content, true));
     }
-    console.log(averageRating)
     if(averageRating - renderedStars > 0){
         ratingList.appendChild(document.importNode(halfStar.content, true));
         renderedStars++;
@@ -68,6 +67,8 @@ function showItem(item){
             ratingList.appendChild(document.importNode(emptyStar.content, true));
         }
     }
+
+    document.querySelector(".userInfo .topLine img").src = getProfilePicturePath(user.id)
 }
 
 function orderItem(){

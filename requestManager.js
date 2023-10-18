@@ -23,7 +23,8 @@ const serviceNames = [
     'Flower Arrangement', 'Culinary Classes', 'Cooking Classes', 'Food Delivery', 'Barista Services',
     'Bike Repair', 'Guitar Lessons', 'Painting Classes', 'Fitness Coaching', 'Personal Chef',
     'Pottery Classes', 'Wine Tasting', 'Personal Shopping', 'Massage Services', 'Nutritionist',
-    'Home Theater Installation'];
+    'Home Theater Installation'
+];
 
 const americanNames = [
   'John Smith', 'Alice Johnson', 'Michael Williams', 'Emily Brown', 'David Jones',
@@ -48,7 +49,8 @@ const americanNames = [
   'Jackson White', 'Willow Davis', 'Oliver Martinez', 'Ivy Anderson', 'Caleb Hill',
   'Evelyn Garcia', 'Logan Thomas', 'Scarlett Smith', 'Michael Baker', 'Abigail Wilson',
   'Grayson Turner', 'Chloe Moore', 'Mason Wright', 'Sophie Johnson', 'Cameron Lewis',
-  'Harper Hall'];
+  'Harper Hall'
+];
 
 const prices = [
   45.67, 89.99, 32.50, 115.00, 72.75, 149.99, 18.95, 75.00, 99.50, 60.00,
@@ -60,8 +62,8 @@ const prices = [
   40.50, 80.25, 29.00, 160.00, 22.75, 125.50, 45.99, 73.00, 38.25, 110.00,
   10.00, 87.95, 69.50, 120.75, 57.00, 30.99, 102.50, 14.75, 84.00, 33.25,
   148.00, 61.99, 20.50, 100.25, 76.00, 46.95, 112.50, 17.25, 68.00, 40.99,
-  130.00, 24.75, 94.50, 50.95, 85.00, 27.25, 75.99, 31.50, 140.00, 63.99];
-
+  130.00, 24.75, 94.50, 50.95, 85.00, 27.25, 75.99, 31.50, 140.00, 63.99
+];
 
 const categories = toJSON(getAllItemsFromTable("categories").responseText);
 
@@ -70,7 +72,7 @@ for (let i = 0; i < 10000; i++) {
         const serviceName = serviceNames[i % serviceNames.length];
         const price = prices[i % prices.length];
         const categorie = categories[i % categories.length];
-    
+
         // if(i%2 == 0){
         //     createOffer(serviceName, "Merlin Engel", price, getCategory(categorie)["short"], "None");
         // }else{
@@ -279,9 +281,7 @@ function getSelectedCategories(){
             returnCBs.push(cb.name);
         }
     });
-
-    console.log(returnCBs.length)
-
+    
     if(returnCBs.length < 1){
         checkBoxes.forEach(element => {returnCBs.push(element.name)})
     }
@@ -316,7 +316,6 @@ function initCategoryList(){
 
     var template = categoryList.querySelector("template");
 
-    console.log(categories)
     categories.forEach(element =>{
         var clone = document.importNode(template.content, true);
         
@@ -385,7 +384,7 @@ function openItem(event){
     window.location.href = fullUrl;
 }
 
-if(getUser()[0].id){}
+if(getUser().id){}  
 else{
     window.location.href = "logIn.html?from=explore"
 }

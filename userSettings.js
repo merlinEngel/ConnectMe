@@ -64,7 +64,7 @@ function getAllOrders(){
     var maxOrdersPerOffer = 10
     user = getUser();
 
-    offers = toJSON(getAllItemsFromTable("offers", " WHERE userName='" + user['fullName'] + "'").responseText)
+    offers = toJSON(getAllItemsFromTable("offers", " WHERE userName='" + user['fullName'] + "'").responseText, true)
     
     i = 0
     offers.forEach(offer => {
@@ -140,7 +140,7 @@ generalInfoPage = document.querySelector("main .right .tabs .generalInformationT
 myOffersPage = document.querySelector("main .right .tabs .myOffersTab");
 generalInfoPageHeader = document.querySelector("main .left .tabList #generalInfoHeader");
 myOffersPageHeader = document.querySelector("main .left .tabList #myOffersHeader");
-if(getUser() != "Keine Angebote gefunden."){
+if(getUser()[0] != "K"){
     loadUI();
 }
 else{
@@ -151,10 +151,22 @@ var profilePicInput = document.querySelector(".generalInformationTab .profilePic
 profilePicInput.addEventListener("change", function() {
     var dateiInput = profilePicInput;
     var datei = dateiInput.files[0];
-
-    console.log(uploadFile(datei, "files/userData/"));
+    var dateiSplit = datei.name.split(".");
+    var uuid = getUser().uuid; 
+    id = Math.random()*10;
+    query("UPDATE `user` SET `profilePicturePath`='files/userData/" + uuid + "/profilePicture" + id +"." + dateiSplit[dateiSplit.length - 1] + "' WHERE `uuid`='" + uuid + "'")
+    path = getProfilePicturePath(getUser().id)
+    console.log(uploadFile(datei, "files/userData/"+ uuid, "profilePicture" + id));
+    document.querySelector(".profilePic img").src = path;
 });
 
 getAllOrders();
-console.log("UPDATE `user` SET 'uuid'='"+getUUID(getUser().id) + "' WHERE 'id'="+getUser().id)
-console.log(query("UPDATE `user` SET `uuid`='"+getUUID(getUser().id) + "' WHERE `id`="+getUser().id).responseText);
+
+var uuid = getUser().uuid
+path = getProfilePicturePath(getUser().id)
+console.log(path)
+try{
+    document.querySelector(".profilePic img").src = path
+}catch{
+    document.querySelector(".profilePic img").src = "../images/defaultProfilePicture";
+}

@@ -43,10 +43,10 @@ main .right .generalInformationTab .profilePic{
 }
 
 main .right .generalInformationTab .profilePic img{
-    height: 90px;
-    width: 90px;
+    height: 70px;
+    width: 70px;
     border-radius: 144px;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .settingTitle{
@@ -152,4 +152,15 @@ main .right .generalInformationTab .profilePic img{
 .right .tabs .myOffersTab .allOffers .chatBtn:hover{
     background: rgb(166, 166, 166);
     transform: scale(1.01);
+}
+
+#profilePic{
+    display: none;
+}
+
+#profilePicLabel{
+    cursor: pointer;
+}
+#profilePicLabel:hover{
+    text-decoration: underline;
 }

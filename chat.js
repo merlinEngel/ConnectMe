@@ -4,14 +4,14 @@ function getOrder(){
     order = toJSON(getAllItemsFromTable("orders", " WHERE id="+id).responseText)[0];
     return order;
 }
-if(getUser()[0]['id'] == getOrder()['clientId'] || getUser()[0]['id'] == getOrder()['providerId']){}
+if(getUser()['id'] == getOrder()['clientId'] || getUser()['id'] == getOrder()['providerId']){}
 else{
     window.location.href = "index.html"
 }
 
 
 function isClient(){
-    if(getUser()[0]['id'] == getOrder()['clientId']){
+    if(getUser()['id'] == getOrder()['clientId']){
         return true;
     }else{
         return false;

@@ -138,6 +138,11 @@ function getAverageRating(id){
 
 function getQeuedOrders(id){
     var orders = toJSON(getAllItemsFromTable("orders", " WHERE providerId="+id).responseText, true)
-    console.log(orders);
     return orders.length;
+}
+
+function getProfilePicturePath(id){
+    var user = getUser(id);
+
+    return user.profilePicturePath;
 }
