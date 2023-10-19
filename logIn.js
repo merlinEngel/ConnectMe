@@ -1,4 +1,4 @@
-var logInShown = false;
+var logInShown = true;
 function switchDisplay(){
     var signUpMenu = document.querySelector(".signUpSection");
     var logInMenu = document.querySelector(".signInSection");
@@ -12,4 +12,3 @@ function switchDisplay(){
         logInShown = true;
     }
 }
-switchDisplay();

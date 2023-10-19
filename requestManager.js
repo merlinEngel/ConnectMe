@@ -255,16 +255,16 @@ function switchFilterSection(){
     });
 
     if(filterSection.style.width == "0vw"){
-        filterSection.style.width = "12vw";
+        filterSection.style.width = "15vw";
         filterSection.style.left = "2vw";
         children.forEach(element =>{
             element.style.opacity = "1";
         });
     }else{
         filterSection.style.width = "0vw";
-        filterSection.style.left = "0px";
+        filterSection.style.left = "-10vw";
         children.forEach(element =>{
-            element.style.opacity = "0";
+            element.style.opacity = "1";
         });
     }
 }
@@ -389,5 +389,7 @@ else{
     window.location.href = "logIn.html?from=explore"
 }
 
+try{
 initCategoryList();
 updatePage();
+}catch{}

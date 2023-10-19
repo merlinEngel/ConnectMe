@@ -164,7 +164,6 @@ getAllOrders();
 
 var uuid = getUser().uuid
 path = getProfilePicturePath(getUser().id)
-console.log(path)
 try{
     document.querySelector(".profilePic img").src = path
 }catch{

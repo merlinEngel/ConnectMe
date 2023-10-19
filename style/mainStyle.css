@@ -18,29 +18,29 @@ html{
 }
 
 .header{
-    height: 60px;
+    height: 5.555555555555vh;
 
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding-inline: 100px;
+    padding-inline: 5.208333333vw;
 }
 
 .header .navItems :nth-child(1){
-    width: 30px;
-    height: 30px;
+    width: 1.5625vw;
+    height: 1.5625vw;
 }
 
 .header .logo{
-    height: 28px;
+    height: 2.592592vh;
 }
 
 .header .menuItem{
-    width: 30px;
+    width: 1.5625vw;
 
-    margin-left: 35px;
+    margin-left: 1.822916666666666vw;
 
     cursor: pointer;
 }
@@ -52,14 +52,14 @@ html{
 .button{
     background: #172678;
     border-radius: 10px;
-    width: 200px;
-    height: 60px;
+    width: 10.4166666666666vw;
+    height: 3.2967032967032967vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 1.5740740vh;
     cursor: pointer;
 }
 .button:hover{
@@ -68,14 +68,12 @@ html{
 .alertButton{
     border: 2px solid #b30000;
     border-radius: 10px;
-    width: 200px;
-    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #b30000;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 1.5740740vh;
     cursor: pointer;
 }
 .alertButton:hover{
@@ -85,7 +83,7 @@ html{
 .buttonIcon{
     background: #D9D9D9;
     border-radius: 100vh;
-    padding: 5px;
+    padding: 0.4629629vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,4 +100,19 @@ html{
 }
 .textButton:hover{
     color: #3a9dc9;
+}
+
+img{
+    object-fit: cover;
+}
+
+.highlight-on-hover:hover:not(.missing){
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    transform: scale(1.005);
+    outline: none;
+    border: 1px solid #172678;
+}
+
+select{
+    cursor: pointer;
 }

@@ -12,8 +12,14 @@ h2{
     margin-block: 30px;
 }
 
+.missing{
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    transform: scale(1.007);
+    outline: none;
+    border: 2px solid #b30000;
+}
+
 input[type=text], textarea{
-    border: 1px solid black;
     border-radius: 12px;
     height:40px;
     padding-inline: 10px;
@@ -21,9 +27,13 @@ input[type=text], textarea{
     flex-grow: 1;
     resize: vertical;
 }
+input[type=text]:not(.missing), textarea:not(.missing){
+    border: 1px solid black;
+}
 
 textarea{
-    height: 200px;
+    height: 150px;
+    min-height: 30px;
     padding-top: 10px;
 }
 
@@ -42,11 +52,68 @@ textarea{
     align-items: start;
 }
 
-
 .seperator{
     height: 1px;
     margin-block: 20px;
     margin-inline: 50px;
     background: #969696;
     align-self: stretch;
+}
+
+select{
+    border: 1px solid black;
+    padding-block: 10px;
+    padding-inline: 5px;
+    height: 40px;
+    width: 300px;
+    flex-grow: 1;
+    border-radius: 12px;
+}
+
+
+.featureList li .container{
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+.featureList li:hover{
+    transform: scale(1.002);
+}
+.featureList{
+    flex-grow: 1;
+    width: 300px;
+}
+.featureList input[type=text]{
+    border: 1px solid black;
+}
+
+.featureList input[type=text]:nth-of-type(1){
+    flex-grow: 2;
+}
+.featureList input[type=text]:nth-of-type(2), .featureList input[type=text]:nth-of-type(3){
+    flex-grow: 0;
+}
+.deleteFeatureBtn{
+    width: 30px;
+    height: 30px;
+}
+.deleteFeatureBtn, .deleteFeatureBtn *{
+    transition: .2s;
+}
+.deleteFeatureBtn svg{
+    width: 30px;
+    height: 20px;
+}
+.deleteFeatureBtn *{
+    fill: #b30000;
+}
+.deleteFeatureBtn:hover *{
+    /* filter: invert(100%); */
+    fill: white;
 }

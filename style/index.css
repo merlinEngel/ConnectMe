@@ -1,6 +1,6 @@
 .top{
-    margin-inline: 100px;
-    margin-top: 50px;
+    margin-inline: 5.208vw;
+    margin-top: 4.6296vh;
     display: flex;
 }
 
@@ -9,9 +9,12 @@ main .left{
 }
 
 main .left h1{
-    margin-top: 80px;
-    width: 568.765px;
-    height: 94.972px;
+    margin-top: 7.407407vh;
+    width: auto;
+}
+main .left h1 svg{
+    height: 20.793703vh;
+    width: auto;
 }
 
 main .left h1 svg:hover{
@@ -19,9 +22,9 @@ main .left h1 svg:hover{
 }
 
 main .left .subHead{
-    font-size: 50px;
+    font-size: 2.604166666666666666666666666vw;
     font-weight: bold;
-    margin-top: 150px;
+    margin-top: 1.8888888888vh;
 }
 
 main .right{
@@ -29,34 +32,34 @@ main .right{
 }
 
 .boxGrid{
-    margin-top: 170px;
-    margin-left: 170px;
-    width: 700px;
+    margin-top: 15.740740vh;
+    margin-left: 8.8541vw;
+    width: 36.458333vw;
     height: auto;
     display: flex;
-    gap: 30px;
+    gap: 1.5625vw;
 
 }
 
 .boxGrid .col1{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 1.5625vw;
     align-items: end;
 }
 
 .boxGrid .col2{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 1.5625vw;
     align-items: start;
     justify-content: center;
 }
 
 .box{
-    width: 300px;
-    height: 300px;
-    border: black solid 4px;
+    width: 15.625vw;
+    height: 15.625vw;
+    border: black solid 0.208333333333vw;
     border-radius: 16px;
     background: #CECECE;
     display: flex;
@@ -72,130 +75,36 @@ main .right{
 
 .box:hover{
     transform: scale(1.02);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 0.52083333333vw rgba(0, 0, 0, 0.7);
 }
 
 .box1{
-    width: 277px;
-    height: 277px;
+    width: 14.427vw;
+    height: 14.427vw;
     background: #CECECE;
-    font-size: 40px;
+    font-size: 3.7037vh;
 }
 
 .box2{
-    width: 206px;
-    height: 206px;
+    width: 10.7291666vw;
+    height: 10.7291666vw;
     background: #A7A7A7;
-    font-size: 30px;
+    font-size: 2.777777777777vh;
 }
 
 .box3{
-    width: 340px;
-    height: 340px;
+    width: 17.708333vw;
+    height: 17.708333vw;
     background: #FFF;
-    font-size: 50px;
+    font-size: 4.629629vh;
 }
 
 main .top .left .arrow{
-    width: 603.361px;
-    height: 279.044px;
+    width: 31.425052083333vw;
+    height: 25.837407vh;
     transform: rotate(180deg) scaleX(-1) scaleY(-1);
     stroke: #000;
-    stroke-width: 4px;
-    margin-top: 0px;
-    margin-left: 270px;
-}
-
-.getStarted{
-    text-align: center;
-    font-size: 32px;
-    position: absolute;
-    transform: rotate(14.114deg);
-    top: 820px;
-    left: 520px;
-}
-
-@media only screen and (max-width: 750px) {
-    .header{
-        height: 40px;
-        padding-inline: 35px;
-        padding-bottom: 5px;
-    }
-
-    .body{
-        overflow-y: hidden;
-    }
-
-    .header .logo{
-        height: 15px;
-    }
-    
-    .header .menuItem{
-        width: 20px;
-        height: 20px;
-    }
-
-    .top{
-        margin-inline: 35px;
-        margin-top: 20px;
-        flex-direction: column;
-    }
-
-    main .left{
-        width: 100%;
-    }
-
-    main .right{
-        width: 100%;
-    }
-
-    main .left h1{
-        width: 300px;
-        height: 100px;
-        margin: 0;
-    }
-
-    main .left h1 svg{
-        width: 300px;
-        margin-top: -40px;
-    }
-
-    main .left .subHead{
-        font-size: 25px;
-        margin-top: 20px;
-    }
-
-    .boxGrid{
-        margin-left: 0;
-        margin-bottom: 10px;
-        flex-direction: column;
-        align-items: start;
-    }
-
-    .box{
-        width: 70vw;
-        height: 100px;
-        font-size: 20px;
-        font-weight: 600;
-        align-items: center;
-        justify-content: start;
-        padding-left: 20px;
-        position: relative;
-        text-align: start;
-    }
-
-    .box svg{
-        display: flex;
-        width: 30px;
-        position: absolute;
-        right: 20%;
-    }
-
-    .arrow{
-        display: none;
-    }
-    
-    .getStarted{
-        display: none;
-    }
+    stroke-width: 0.370370370vh;
+    margin-top: 0vw;
+    margin-left: 14.0625vw;
 }

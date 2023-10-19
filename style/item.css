@@ -1,12 +1,12 @@
 h3{
     font-weight: 800;
-    font-size: 60px;
-    margin-inline: 100px;
-    margin-top: 30px;
+    font-size: 5.555555555555555vh;
+    margin-inline: 5.208333333333334vw;
+    margin-top: 2.7777777777777777vh;
 }
 
 .wrapper{
-    margin-inline: 100px;
+    margin-inline: 5.208333333333334vw;
     display: flex;
     justify-content: space-between;
 }
@@ -21,120 +21,145 @@ h3{
 }
 
 .images{
-    height: 545px;
+    height: 50.46296296296296vh;
 }
 
 .images img{
-    height:488px;
+    height:45.18518518518518vh;
     width: 100%;
     background-size: contain;
     border-radius: 16px;
 }
 
 .images .imgGallery{
-    height: 51px;
+    height: 4.722222222222222vh;
 }
 .images .imgGallery ul{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
+    gap: 1.0416666666666667vw;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    scrollbar-width: thin;
+
+    scrollbar-color: transparent transparent;
+}
+.images .imgGallery ul::-webkit-scrollbar {
+    width: 0;
+}
+.images .imgGallery ul::-webkit-scrollbar-track {
+    background: transparent;
+}
+.images .imgGallery ul::-webkit-scrollbar-thumb {
+    background: transparent;
 }
 
 .images .imgGallery ul li{
-    border-radius: 9px;
-    background: #D9D9D9;
-    width: 100px;
-    height: 50px;
+    width: 5.208333333333334vw;
+    height: 4.62962962962963vh;
 }
 .images .imgGallery ul li img{
-    width: 100px;
-    height: 50px;
+    width: 5.208333333333334vw;
+    height: 4.62962962962963vh;
+    border-radius: .5vw;
+}
+.images .imgGallery ul li:hover:not(.active){
+    opacity: .8;
+    transform: scale(1.02);
+}
+.images .imgGallery ul li:not(.active){
+    opacity: .7;
 }
 .images .imgGallery ul li.active{
-    background: #B7B7B7;
+    opacity: 1;
 }
 
 .userInfo{
-    height: 133px;
+    height: 12.314814814814815vh;
     flex-grow: 1;
     background: #D9D9D9;
     border-radius: 16px;
-    margin-top: 46px;
-    padding-inline: 20px;
-    padding-block: 20px;
+    margin-top: 4.259259259259259vh;
+    padding: 1.0416666666666667vw;
 }
 
 .userInfo .topLine{
     display: flex;
-    margin-bottom: 8px;
+    margin-bottom: 0.7407407407407407vh;
     align-items: center;
 }
 
 .userInfo .topLine .profilePic{
-    width: 50px;
-    height: 50px;
+    width: 2.604166666666667vw;
+    height: 2.604166666666667vw;
     border-radius: 30px;
     border: 1px solid black;
-    margin-right: 10px;
+    margin-right: 0.5208333333333334vw;
 }
 
 .userInfo .topLine .userName{
-    font-size: 25px;
+    font-size: 3.314814814814815vh;
     font-weight: 300;
     
 }
 
 .userInfo .topLine .rating ul{
-    margin-inline: 10px;
+    margin-inline: 0.5208333333333334vw;
     display: flex;
     flex-direction: row;
-    gap: 7px;
+    gap: 0.36458333333333337vw;
 }
 
 .userInfo .topLine .queuedOrders{
-    font-size: 17px;
+    font-size: 1.574074074074074vh;
     font-weight: 300;
 }
 
+.userInfo .description{
+    font-size: 1.8vh;
+}
+
 .wrapper .right .topContainer{
-    height: 515px;
-    width:489px;
+    height: 47.68518518518518vh;
+    width: 25.46875vw;
     background: #D9D9D9;
     border-radius: 16px;
-    padding: 15px;
+    padding: 1.3888888888888888vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .wrapper .right .topContainer .description{
-    font-size: 22px;
+    font-size: 2.0370370370370368vh;
     font-weight: 300;
 }
 
 .wrapper .right .topContainer .bookNowBtn{
-    width: 443px;
-    height: 90px;
+    width: 23.072916666666668vw;
+    height: 8.333333333333332vh;
     align-self: center;
     justify-self: end;
-    margin-bottom: 27px;
-    font-size: 30px;
+    margin-bottom: 2.5vh;
+    font-size: 2.7777777777777777vh;
     font-weight: 700;
 }
 
 .wrapper .right .topContainer .features{
     height: auto;
-    margin-top: 40px;
+    margin-top: 3.7037037037037033vh;
 }
 
 .wrapper .right .topContainer .features .topLine p{
-    font-size: 18px;
+    font-size: 1.6666666666666665vh;
     font-weight: 300;
 }
 
 .wrapper .right .topContainer .features .topLine svg{
-    width: 9px;
-    height: 12.251px;
+    width: 0.46875vw;
+    height: 1.1343518518518518vh;
 }
 
 .wrapper .right .topContainer .features .topLine{
@@ -145,10 +170,10 @@ h3{
 .wrapper .right .lowerContainer{
     background: #D9D9D9;
     border-radius: 16px;
-    width: 489px;
-    padding: 15px;
-    height: 123px;
-    margin-top: 46px;
+    width: 25.46875vw;
+    padding: 1.0416666666666667vw;
+    height: 12.314814814814815vh;
+    margin-top: 4.259259259259259vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -157,5 +182,5 @@ h3{
 .wrapper .right .lowerContainer .cost, .wrapper .right .lowerContainer .completionTime, .wrapper .right .lowerContainer .avrgRating{
     display: flex;
     justify-content: space-between;
-    padding-inline: 20px;
+    padding-inline: 1.0416666666666667vw;
 }
