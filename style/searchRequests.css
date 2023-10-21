@@ -1,3 +1,182 @@
+@media screen and (orientation:portrait){
+    .searchBar{
+        width: 100vw;
+        height: 6.5vh;
+
+        margin-top: 2vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .searchBox{
+        padding-inline: 1.6vw;
+
+        width: 64vw;
+        height: 4vh;
+
+        border-radius: 30px;
+        border: solid 1px black;
+
+        background-color: #D9D9D9;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .searchIcon{
+        height: 50%;
+        margin-right: 3%;
+    }
+
+    .textInput{
+        border: none;
+        width:  inherit;
+        height: 4.629629vh;
+    
+        color: black;
+        font-size: 1.8vh;
+        font-weight: 400;
+        background: transparent;
+    }
+    .textInput:focus{outline: none;}
+
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: inherit;
+    }
+
+    .filterIcon{
+        width: 4vh;
+        height: 4vh;
+        background-color: #D9D9D9;
+        border: 1px solid black;
+        border-radius: 30px;
+        cursor: pointer;
+        margin-left: 2vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .filterIcon svg{
+        height: 50%;
+    }
+
+    .icon{
+        filter: invert(43%) sepia(67%) saturate(0%) hue-rotate(239deg) brightness(118%) contrast(121%);
+    }
+
+
+    .requestList{
+        margin-inline: 5vw;
+        flex-grow: 1;
+    }
+
+    .requestList ul li{
+        width: 100%;
+        height: 20.5vh;
+        box-sizing: border-box;
+        flex-grow: 1;
+    }
+
+    .requestList ul{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5vh;
+    }
+
+    .requestList ul li .container{
+        width: inherit;
+        height: inherit;
+        background-image: url(../images/defaultRequestPic.jpg);
+        border: 2px solid #D9D9D9;
+        border-radius: 12px;
+        display: flex;
+        background-size: contain;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .requestList ul li .container .category{
+        background: white;
+        border-radius: 10px;
+        padding-inline: 1vw;
+        margin: 2vw;
+    }
+    .requestList ul li .container .category p{
+        color: black;
+        font-weight: 600;
+        font-size: 1.62vh;
+    }
+
+    .requestList ul li .container .requestOfferIcon{
+        background: white;
+        border-radius: 10px;
+        padding-inline: 1vw;
+        margin: 2vw;
+    }
+    .requestList ul li .container .requestOfferIcon p{
+        color: black;
+        font-weight: 600;
+        font-size: 1.62vh;
+    }
+
+    .requestList ul li .container .topLine{
+        display: flex;
+        justify-content: space-between;
+        align-self: stretch;
+    }
+
+    .requestList ul li .container .details{
+        width: 90%;
+        height: 25%;
+        background: #FFF;
+        border-radius: 16px;
+        margin-bottom: 1.4vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: 2vw;
+    }
+
+    .requestList ul li .container .details .name{
+        font-weight: bold;
+        font-size: 1.6vh;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 80%;
+    }
+    .requestList ul li .container .details .user{
+        font-weight: normal;
+        font-size: 1.3vh;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 80%;
+    }
+
+    .requestList ul li .container .details .left{
+        width: 80%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .requestList ul li .container .details .price{
+        font-size: 2.5vh;
+    }
+}
+
+
+
+.filterSection{display: none;}
+@media screen and (orientation:landscape){
 .searchBar{
     width: 100vw;
     height: 6.481481vh;
@@ -18,7 +197,7 @@ main{
 
 .searchBox{
     padding-inline: 1.614814814vw;
-    width: 34.6875w;
+    width: 34.6875vw;
     height: 4.6296vh;
 
     border-radius: 90px;
@@ -70,17 +249,6 @@ main{
     filter: invert(43%) sepia(67%) saturate(0%) hue-rotate(239deg) brightness(118%) contrast(121%);
 }
 
-.navItems{
-    gap: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navItems *{
-    height: 2.314814814814815vh;
-}
-
 .requestList{
     margin-inline: 5.208333333333334vw;
     height: 46.29629629629629vh;
@@ -89,7 +257,6 @@ main{
 }
 
 .requestList ul li{
-    list-style: none;
     width: 15.625vw;
     height: 15.625vw;
     box-sizing: border-box;
@@ -126,10 +293,9 @@ main{
     margin: 0.5208333333333334vw;
 }
 .requestList ul li .container .category p{
-    /* color: #686868; */
     color: black;
     font-weight: 600;
-    font-size: 1.6203703703703702vh;
+    font-size: 1.62vh;
 }
 
 .requestList ul li .container .details{
@@ -142,14 +308,14 @@ main{
     align-items: center;
     padding-inline: 10px;
     margin-bottom: 1.4814814814814814vh;
-    margin-left: 0.8333333333333334vw;
-    margin-right: 0.8333333333333334vw;
+    margin-left: 0.83333vw;
+    margin-right: 0.83333vw;
     cursor: pointer;
 }
 
 .requestList ul li .container .details .name{
     font-weight: bold;
-    font-size: 1.6666666666666665vh;
+    font-size: 1.6vh;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -303,4 +469,5 @@ input[type=checkbox]{
 
 .categoryCheckBox{
     display: flex;
+}
 }

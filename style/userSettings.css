@@ -1,28 +1,29 @@
+@media screen and (orientation:landscape){
 main{
     display: flex;
-    padding-inline: 100px;
-    gap: 100px;
+    padding-inline: 5.2631578947368425vw;
+    gap: 5.2631578947368425vw;
 }
 
 main .right{
-    margin-top: 75px;
+    margin-top: 7.5vh;
 }
 
 main .left{
-    width: 20%;
-    border-right: 1px solid black;
+    width: 20vw;
+    border-right: .1vh solid black;
     height: 100vh;
 }
 
 main .left .tabList li{
-    font-size: 28px;
+    font-size: 2.8vh;
     font-weight: 500;
-    margin-bottom: 68px;
+    margin-bottom: 6.8vh;
     cursor: pointer;
 }
 
 main .left .tabList{
-    margin-top: 75px;
+    margin-top: 7.5vh;
 }
 
 main .left .tabList li.active{
@@ -33,31 +34,31 @@ main .left .tabList li.active{
 main .right .generalInformationTab{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 3vh;
 }
 
 main .right .generalInformationTab .profilePic{
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 1.5789473684210527vw;
 }
 
 main .right .generalInformationTab .profilePic img{
-    height: 70px;
-    width: 70px;
-    border-radius: 144px;
-    border: 2px solid black;
+    height: 3.6842105263157894vw;
+    width: 3.6842105263157894vw;
+    border-radius: 100vh;
+    border: .2vh solid black;
 }
 
 .settingTitle{
-    width: 344px;
-    font-size: 25px;
+    width: 18.105263157894736vw;
+    font-size: 2.5vh;
     font-weight: 500;
 }
 
 .tabHeader{
-    font-size: 35px;
-    margin-bottom: 15px;
+    font-size: 3.5vh;
+    margin-bottom: 1.5vh;
 }
 
 .setting{
@@ -67,86 +68,102 @@ main .right .generalInformationTab .profilePic img{
 
 .tabSubHeader{
     font-weight: 700;
-    font-size: 27px;
-    margin-top: 50px; 
-    margin-bottom: 20px;
+    font-size: 2.7vh;
+    margin-top: 5vh; 
+    margin-bottom: 2vh;
 }
 
 .setting input, .setting textarea{
-    border: 1px solid black;
-    padding-inline: 10px;
-    width: 400px;
-    height: 50px;
-    border-radius: 10px;
-    font-size: 25px;
+    border: .1vh solid black;
+    padding-inline: 0.5263157894736842vw;
+    width: 21.05263157894737vw;
+    height: 5vh;
+    border-radius: 1vh;
+    font-size: 2.5vh;
 }
 
 .setting.description{
     align-items: start;
 }
 .setting.description textarea{
-    height: 300px;
-    padding-block: 10px;
+    height: 30vh;
+    padding-block: 1vh;
     resize: vertical;
-    min-height: 30px;
+    min-height: 3vh;
     overflow-y: hidden;
 }
 
 .buttons{
-    margin-block: 30px;
+    margin-block: 3vh;
     display: flex;
-    gap: 30px;
+    gap: 1.5789473684210527vw;
+}
+.buttons div{
+    height: 5vh;
+    padding-inline:.3vw;
+    padding-block:1vh;
+    font-size: 2vh;
 }
 
 .right .tabs .myOffersTab .allOffers .offersLi{
     height: auto;
-    border-radius: 16px;
-    width: 1000px;
+    border-radius: 1.6vh;
+    width: 52.63157894736842vw;
 }
 
 .right .tabs .myOffersTab .allOffers .offersLi .orders{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 1.5vh;
     background: #D9D9D9;
-    padding: 20px;
-    border-radius: 16px;
+    padding: 2vh 1.0526315789473684vw;
+    border-radius: 1.6vh;
 }
 
 .right .tabs .myOffersTab .allOffers .offersLi .orders .ordersLi{
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    padding: 1.5vh 0.7894736842105263vw;
     background: white;
-    border-radius: 16px;
+    border-radius: 1.6vh;
+    align-items: center;
+}
+
+.right .tabs .myOffersTab .allOffers .remainingTime, .right .tabs .myOffersTab .allOffers .messages, .right .tabs .myOffersTab .allOffers .clientName{
+    font-size: 1.7vh;
+    text-align: center;
 }
 
 .right .tabs .myOffersTab .allOffers .offersLi .orders .ordersLi .infos{
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    width: 390px;
+    gap: 1.0526315789473684vw;
+    width: 20.526315789473685vw;
+    align-items: center;
 }
 
 .right .tabs .myOffersTab .allOffers .offerName{
     font-weight: 600;
-    font-size: 25px;
-    margin-left: 10px;
-    margin-bottom: 15px;
+    font-size: 2.5vh;
+    margin-left: 0.5263157894736842vw;
+    margin-bottom: 1.5vh;
 }
 
 .right .tabs .myOffersTab .allOffers .chatBtn *{
-    width: 20px;
-    height: 20px;
+    width: 1.0526315789473684vw;
+    height: 2vh;
 }
 
 .right .tabs .myOffersTab .allOffers .chatBtn{
-    width: 20px;
-    height: 20px;
+    width: 1.0526315789473684vw;
+    height: 1.0526315789473684vw;
     cursor: pointer;
     background: rgb(176, 176, 176);
-    padding: 4px;
-    border-radius: 5px;
+    padding: .4vh 0.21052631578947367vw;
+    border-radius: .5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .right .tabs .myOffersTab .allOffers .chatBtn:hover{
@@ -163,4 +180,5 @@ main .right .generalInformationTab .profilePic img{
 }
 #profilePicLabel:hover{
     text-decoration: underline;
+}
 }

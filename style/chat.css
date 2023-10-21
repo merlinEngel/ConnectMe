@@ -1,3 +1,4 @@
+@media screen and (orientation:landscape){
 main{
     margin-top: 0px;
     display: flex;
@@ -90,4 +91,5 @@ input[type=text]{
 .chatArea ul li .container .time{
     font-size: 0.925925vh;
     margin-top: 0.462462vh;
+}
 }

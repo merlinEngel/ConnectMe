@@ -1,3 +1,93 @@
+@media only screen and (orientation:portrait){
+.top{   
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+    margin-inline: 3vw;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-left: 3vw;
+}
+
+main h1{
+    width: auto;
+}
+main h1 svg{
+    width: 80vw;
+    height: 20vh;
+}
+main .left .subHead{
+    font-size: 3.5vh;
+}
+
+main .top .right{
+    margin-top: 10vh;
+}
+
+main .top .arrow{
+    display: none;
+}
+
+.boxGrid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+
+.boxGrid .col1, .boxGrid, .col2{
+    display: flex;
+    flex-direction: column;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    margin-bottom: 5vh;
+    width: 90vw;
+    background-color: #c4c4c4;
+    padding-inline: 3vw;
+    border: 2px solid black;
+    border-radius: 5vw;
+}
+
+.box svg{
+    width: 10%;
+    height: auto;
+}
+
+.box p{
+    white-space: pre;
+    font-size: 2.6vh;
+    width: 80%;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (orientation:landscape) and (min-width:600px){
 .top{
     margin-inline: 5.208vw;
     margin-top: 4.6296vh;
@@ -60,13 +150,19 @@ main .right{
     width: 15.625vw;
     height: 15.625vw;
     border: black solid 0.208333333333vw;
-    border-radius: 16px;
+    border-radius: 1.6vh;
     background: #CECECE;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     cursor: pointer;
+}
+.box p{
+    width: 66%;
+    height: 66%;
+    display: flex;
+    align-items: center;
+    text-align: center
 }
 
 .box svg{
@@ -108,3 +204,5 @@ main .top .left .arrow{
     margin-top: 0vw;
     margin-left: 14.0625vw;
 }
+}
+

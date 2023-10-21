@@ -1,3 +1,4 @@
+@media screen and (orientation:landscape){
 h3{
     font-weight: 800;
     font-size: 5.555555555555555vh;
@@ -183,4 +184,5 @@ h3{
     display: flex;
     justify-content: space-between;
     padding-inline: 1.0416666666666667vw;
+}
 }

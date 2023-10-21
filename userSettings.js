@@ -43,6 +43,19 @@ function deleteUser(){
 }
 
 function showPage(index){
+    url = new URL(window.location.href)
+    url.searchParams.set("page", index)
+    window.location.href = url.href
+    hideAllPages();
+    if(index == 0){
+        generalInfoPage.style.display = "";
+        generalInfoPageHeader.classList.add('active');
+    }else if(index == 1){
+        myOffersPage.style.display = "";
+        myOffersPageHeader.classList.add('active');
+    }
+}
+function loadPage(index){
     hideAllPages();
     if(index == 0){
         generalInfoPage.style.display = "";
@@ -111,6 +124,7 @@ function renderOffer(name, orders, maxOrdersPerOffer){
     orders.forEach(order =>{
         if(i < maxOrdersPerOffer){
             cloneTwo = document.importNode(templateTwo.content, true);
+            console.log(order['id'])
 
             cloneTwo.querySelector(".ordersLi").id = order['id'];
             cloneTwo.querySelector(".ordersLi").querySelector(".clientName").textContent = getUser(order['clientId'])['fullName']
@@ -147,6 +161,16 @@ else{
     window.location.href ="logIn.html?from=userSettings";
 }
 
+function getPage(){
+    url = new URL(window.location.href);
+
+    page = url.searchParams.get("page");
+    if(page == null){
+        page = 0
+    }
+    return page;
+}
+
 var profilePicInput = document.querySelector(".generalInformationTab .profilePic input#profilePic");
 profilePicInput.addEventListener("change", function() {
     var dateiInput = profilePicInput;
@@ -156,7 +180,6 @@ profilePicInput.addEventListener("change", function() {
     id = Math.random()*10;
     query("UPDATE `user` SET `profilePicturePath`='files/userData/" + uuid + "/profilePicture" + id +"." + dateiSplit[dateiSplit.length - 1] + "' WHERE `uuid`='" + uuid + "'")
     path = getProfilePicturePath(getUser().id)
-    console.log(uploadFile(datei, "files/userData/"+ uuid, "profilePicture" + id));
     document.querySelector(".profilePic img").src = path;
 });
 
@@ -169,3 +192,5 @@ try{
 }catch{
     document.querySelector(".profilePic img").src = "../images/defaultProfilePicture";
 }
+
+loadPage(getPage());

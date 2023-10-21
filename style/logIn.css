@@ -1,3 +1,4 @@
+@media screen and (orientation:landscape){
 main{
     display: flex;
     flex-direction: column;
@@ -34,8 +35,9 @@ main .mainSection .buttons{
 main .mainSection .buttons div{
     width: 220px;
     display: flex;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 27px;
+    height: 60px;
 }
 
 main .mainSection p.fieldHeader {
@@ -87,4 +89,5 @@ input[type=text], input[type=password]{
 
 .textButton{
     font-size: 20px;
+}
 }

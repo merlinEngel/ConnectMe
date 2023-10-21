@@ -139,13 +139,14 @@ function renderList(items){
         
             if(items[i].isOffer == 1){
                 clone.querySelector('li').querySelector('.container .topLine .requestOfferIcon #requestText').textContent = "Offer";
+                clone.querySelector('li').querySelector('.container').style.background = "url("+items[i].thumbnail+")";
             }else{  
                 clone.querySelector('li').querySelector('.container .topLine .requestOfferIcon #requestText').textContent = "Request";
             }
 
             myList.appendChild(clone);
         }catch(err){
-            console.error("Couldnt render item:"+i + "\r\n Error:" + err.message);
+            console.error("Couldnt render item:"+i + "\r\n Error:" + err);
         }
     }
 }
@@ -170,6 +171,8 @@ function filterList(items, type){
     var filteredItems = [];
 
     var filterString = document.getElementById("searchText").value;
+
+    filterString = filterString.replace(/\s/g,'').toLowerCase();
 
     var minPrice = parseInt(document.querySelector(".priceMinInput").value);
     var maxPrice = parseInt(document.querySelector(".priceMaxInput").value);
@@ -205,7 +208,7 @@ function filterList(items, type){
         });
         
         if((showOffers && type == "offers") || (showRequests && type == "requests")){
-            if(user.replace(/\s/g,'').toLowerCase().includes(filterString.replace(/\s/g,'').toLowerCase()) || name.replace(/\s/g,'').toLowerCase().includes(filterString.replace(/\s/g,'').toLowerCase())){
+            if(user.replace(/\s/g,'').toLowerCase().includes(filterString) || name.replace(/\s/g,'').toLowerCase().includes(filterString)){
                 if (minPrice <= price){
                     if(price <= maxPrice){
                         if(isSelectedCategory){
