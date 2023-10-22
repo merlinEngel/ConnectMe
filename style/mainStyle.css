@@ -41,6 +41,20 @@
     gap: 7vw;
 }
 
+.button{
+    background: #172678;
+    border-radius: 2.26vw;
+    width: 10.4166666666666vw;
+    height: 3.2967032967032967vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5740740vh;
+    cursor: pointer;
+}
+
 
 body{
     overflow-x: hidden;

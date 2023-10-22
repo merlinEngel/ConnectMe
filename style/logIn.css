@@ -1,28 +1,130 @@
+@media screen and (orientation:portrait) {
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10vh;
+        margin-inline: 5.3vw;
+    }
+
+    main .logo, main .logo svg{
+        height: 8vh;
+    }
+
+    main .mainSection{
+        margin-top: 4vh;
+        background-color: #d7d7d7;
+        width: 60vw;
+        height: 25vh;
+
+        border-radius: 1.6vh;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: space-between;
+        padding: 2vh 1.1vw;
+    }
+
+    main .mainSection .buttons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2vw;
+    }
+
+    main .mainSection .buttons div{
+        width: 30vw;
+        display: flex;
+        font-weight: 500;
+        font-size: 2vh;
+        height: 5vh;
+        margin-left: 2vw;
+    }
+
+    .textButton{
+        margin-right: 4vw;
+    }
+
+    main .mainSection p.fieldHeader{
+        font-weight: 500;
+        margin-left: 1vw;
+        font-size: 2vh;
+    }
+
+    main .mainSection .input{
+        margin-inline: 2vw;
+    }
+
+    main .mainSection .inputFields{
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+    }
+
+    main .mainSection .inputFields .nameFields{
+        display: flex;
+        gap: .5vw;
+    }
+
+    main .mainSection .inputFields .nameFields *{
+        width: 23.8vw;
+    }
+
+    input[type=text], input[type=password]{
+        border: none;
+        font-size: 1.2vh;
+        padding-inline: 1vw;
+        border-radius: 1vw;
+        padding-block: 0.3vh;
+        width: 52vw;
+    }
+
+    .password .field, .password .input{
+        display: flex;
+        align-items: center;
+    }
+
+    .password .field i{
+        position: relative;
+        right: 12%;
+        cursor: pointer;
+        color: gray;
+        transform: scale(1.7);
+    }
+
+    .textButton{
+        font-size: 1vh;
+    }
+}
+
+
+
 @media screen and (orientation:landscape){
 main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
-    margin-inline: 100px;
+    margin-top: 10vh;
+    margin-inline: 5.263vw;
 }
 
 main .logo, main .logo svg{
-    height: 80px;
+    height: 8vh;
 }
 
 main .mainSection{
-    margin-top: 40px;
+    margin-top: 4vh;
     background: #A7A7A7;
-    height: 426px;
-    width: 402px;
-    border-radius: 16px;
+    height: 42.6vh;
+    width: 21.157vw;
+    border-radius: 1.6vh;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
-    padding: 20px;
+    padding: 2vh 1.1vw;
 }
 
 main .mainSection .buttons{
@@ -43,48 +145,44 @@ main .mainSection .buttons div{
 main .mainSection p.fieldHeader {
     font-weight: 500;
     margin-left: 10px;
-    font-size: 20px;
-    
+    font-size: 2vh;
 }
 
 main .mainSection .input{
-    width: 400px;
+    width: 21.052vw;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
 }
 main .mainSection .inputFields{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1vh;
 }
 
 main .mainSection .inputFields .nameFields{
     display: flex;
     justify-content: space-between;
-    margin-right: 28px;
-    gap: 10px;
+    margin-right: 1.473vw;
+    gap: 0.526vw;
 }
 main .mainSection .inputFields .nameFields *{
-    width: 170px;
+    width: 8.947vw0;
 }
 
 input[type=text], input[type=password]{
     border: none;
-    font-size: 20px;
-    padding-inline: 10px;
-    width: 375px;
+    font-size: 2vh;
+    padding-left: 0.526vw;
     border-radius: 8px;
-    padding-block: 3px;
+    padding-block: .3vh;
+    align-self: stretch;
 }
 
 .password .field{
     display: flex;
+    flex-direction: column;
     align-items: center;
-}
-
-.password .field i{
-    position: relative;
-    right: 8%;
-    cursor: pointer;
-    color: gray;
 }
 
 .textButton{
