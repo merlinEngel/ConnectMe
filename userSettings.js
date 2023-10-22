@@ -157,9 +157,6 @@ myOffersPageHeader = document.querySelector("main .left .tabList #myOffersHeader
 if(getUser()[0] != "K"){
     loadUI();
 }
-else{
-    window.location.href ="logIn.html?from=userSettings";
-}
 
 function getPage(){
     url = new URL(window.location.href);
@@ -178,8 +175,11 @@ profilePicInput.addEventListener("change", function() {
     var dateiSplit = datei.name.split(".");
     var uuid = getUser().uuid; 
     id = Math.random()*10;
+    console.log(uploadFile(datei, "files/userData/" + uuid, "profilePicture" + id))
     query("UPDATE `user` SET `profilePicturePath`='files/userData/" + uuid + "/profilePicture" + id +"." + dateiSplit[dateiSplit.length - 1] + "' WHERE `uuid`='" + uuid + "'")
     path = getProfilePicturePath(getUser().id)
+
+    console.log(path)
     document.querySelector(".profilePic img").src = path;
 });
 

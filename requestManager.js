@@ -387,11 +387,6 @@ function openItem(event){
     window.location.href = fullUrl;
 }
 
-if(getUser().id){}  
-else{
-    window.location.href = "logIn.html?from=explore"
-}
-
 try{
 initCategoryList();
 updatePage();

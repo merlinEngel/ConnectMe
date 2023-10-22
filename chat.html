@@ -11,6 +11,8 @@
     <script src="app.js" defer></script>
     <script src="sqlManager.js" defer></script>
     <script src="userControl.js" defer></script>
+    <script src="checkLogIn.js" defer></script>
+    <script src="fileManager.js"></script>
     <script src="chat.js" defer></script>
     <title>Chat | Connect Me</title>
 </head>
@@ -45,6 +47,12 @@
                             <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum autem non ipsum velit cumque consectetur debitis possimus architecto, eius vitae?</p>
                             <p class="time"></p>
                         </div>
+                        <a class="fileContainer" download>
+                            <p onclick="downloadAttachment(event)">README.txt</p>
+                            <svg width="23" height="30" viewBox="0 0 23 30" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="downloadAttachment(event)">
+                                <path d="M2.2842 26.2415H21.4065C22.2866 26.2415 23 26.9549 23 27.835C23 28.6418 22.4005 29.3085 21.6227 29.414L21.4065 29.4285H2.2842C1.40412 29.4285 0.690674 28.7151 0.690674 27.835C0.690674 27.0283 1.29017 26.3616 2.06797 26.256L2.2842 26.2415ZM11.6291 0.759664L11.8453 0.745117C12.6521 0.745117 13.3188 1.34461 13.4243 2.12241L13.4389 2.33864V18.6733L18.2305 13.8845C18.7962 13.3188 19.6815 13.2674 20.3053 13.7302L20.4841 13.8845C21.0498 14.4503 21.1012 15.3356 20.6384 15.9594L20.4841 16.1381L12.9721 23.6501C12.4064 24.2158 11.5211 24.2672 10.8973 23.8044L10.7185 23.6501L3.2066 16.1381C2.5843 15.5158 2.5843 14.5068 3.2066 13.8845C3.77234 13.3188 4.65763 13.2674 5.28146 13.7302L5.46019 13.8845L10.2518 18.6776V2.33864C10.2518 1.5319 10.8513 0.865182 11.6291 0.759664Z" fill="#212121"/>
+                            </svg>                            
+                        </a>
                     </li>
                 </template>
 
@@ -54,6 +62,12 @@
                             <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum autem non ipsum velit cumque consectetur debitis possimus architecto, eius vitae? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia asperiores cupiditate, corrupti, deserunt molestias quia repellat ipsum velit, ea rerum vitae sed culpa minima tempore aperiam similique libero sequi ipsa. Et eum voluptatem nesciunt deserunt odio sed enim, repudiandae dolor dicta quia, dolores dolore cumque dolorem voluptas fugit explicabo. Rem eaque exercitationem incidunt distinctio temporibus deleniti facere perspiciatis quia, minima dignissimos omnis quaerat magnam fugit, possimus praesentium sapiente voluptate aut? Iusto, laudantium nobis neque, quas eius officiis sit illum eum voluptatem, voluptatibus temporibus repellendus inventore iste odit? In, doloremque. Iusto porro voluptatibus eveniet necessitatibus impedit beatae, similique voluptate architecto nam?</p>
                             <p class="time"></p>
                         </div>
+                        <div class="fileContainer">
+                            <p onclick="downloadAttachment(event)">README.txt</p>
+                            <svg width="23" height="30" viewBox="0 0 23 30" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="downloadAttachment(event)">
+                                <path d="M2.2842 26.2415H21.4065C22.2866 26.2415 23 26.9549 23 27.835C23 28.6418 22.4005 29.3085 21.6227 29.414L21.4065 29.4285H2.2842C1.40412 29.4285 0.690674 28.7151 0.690674 27.835C0.690674 27.0283 1.29017 26.3616 2.06797 26.256L2.2842 26.2415ZM11.6291 0.759664L11.8453 0.745117C12.6521 0.745117 13.3188 1.34461 13.4243 2.12241L13.4389 2.33864V18.6733L18.2305 13.8845C18.7962 13.3188 19.6815 13.2674 20.3053 13.7302L20.4841 13.8845C21.0498 14.4503 21.1012 15.3356 20.6384 15.9594L20.4841 16.1381L12.9721 23.6501C12.4064 24.2158 11.5211 24.2672 10.8973 23.8044L10.7185 23.6501L3.2066 16.1381C2.5843 15.5158 2.5843 14.5068 3.2066 13.8845C3.77234 13.3188 4.65763 13.2674 5.28146 13.7302L5.46019 13.8845L10.2518 18.6776V2.33864C10.2518 1.5319 10.8513 0.865182 11.6291 0.759664Z" fill="#212121"/>
+                            </svg>                            
+                        </div>
                     </li>
                 </template>
             </ul>
@@ -61,9 +75,13 @@
         <div class="inputArea">
             <input class="messageInput" name="message" placeholder="Enter message..." type="text">
             <div class="attachFilesBtn buttonIcon">
-                <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.4019 4.51273e-05C36.1652 0.00577945 46.5097 10.3538 46.5097 23.1179C46.5097 29.4967 43.9263 35.2721 39.7486 39.4548L39.7488 39.4546C35.539 43.8104 29.6442 46.5147 23.1179 46.5147C10.3502 46.5147 0 36.1645 0 23.3968C0 16.8731 2.70226 10.9805 7.04856 6.77725L7.05502 6.77101C11.2153 2.58844 16.9748 0 23.3387 0H23.4054H23.4019L23.4019 4.51273e-05ZM23.4019 43.1534C34.4672 43.1534 43.4374 34.1832 43.4374 23.1179C43.4374 12.0526 34.4672 3.08245 23.4019 3.08245C12.3366 3.08245 3.36641 12.0526 3.36641 23.1179C3.37928 34.178 12.3417 43.1406 23.4006 43.1534H23.4019ZM35.1767 24.6591H11.6271V21.5768H35.1767V24.6591ZM24.943 34.8927H21.8606V11.3433H24.943V34.8927Z" fill="black"/>
-                </svg>
+                <input type="file" name="attachFileInput" id="attachFileInput" style="display: none;" onchange="getChatAttachments(event)">
+                <label for="attachFileInput">
+                    <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.4019 4.51273e-05C36.1652 0.00577945 46.5097 10.3538 46.5097 23.1179C46.5097 29.4967 43.9263 35.2721 39.7486 39.4548L39.7488 39.4546C35.539 43.8104 29.6442 46.5147 23.1179 46.5147C10.3502 46.5147 0 36.1645 0 23.3968C0 16.8731 2.70226 10.9805 7.04856 6.77725L7.05502 6.77101C11.2153 2.58844 16.9748 0 23.3387 0H23.4054H23.4019L23.4019 4.51273e-05ZM23.4019 43.1534C34.4672 43.1534 43.4374 34.1832 43.4374 23.1179C43.4374 12.0526 34.4672 3.08245 23.4019 3.08245C12.3366 3.08245 3.36641 12.0526 3.36641 23.1179C3.37928 34.178 12.3417 43.1406 23.4006 43.1534H23.4019ZM35.1767 24.6591H11.6271V21.5768H35.1767V24.6591ZM24.943 34.8927H21.8606V11.3433H24.943V34.8927Z" fill="black"/>
+                    </svg>
+                </label>
+                <p class="attachmentName" onclick="clearChatAttachments()" style="display: none;"></p>
             </div>
             <div class="sendMessageBtn buttonIcon" onclick="sendMessage()">
                 <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
