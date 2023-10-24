@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style/createOffer.css">
     <link rel="stylesheet" href="style/mainStyle.css">
+    <link rel="stylesheet" href="style/createOffer.css">
+    <link rel = "icon" href = "images/logoIcon.svg"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="sqlManager.js" defer></script>
+    <script src="fileManager.js" defer></script>
     <script src="userControl.js" defer></script>
     <script src="app.js" defer></script>
-    <script src="createOffer.js" defer  ></script>
     <script src="checkLogIn.js" defer></script>
     <script src="requestManager.js" defer></script>
+    <script src="createOffer.js" defer></script>
     <title>Create new offer | Connect.Me</title>
 </head>
 <body>
@@ -45,17 +47,21 @@
         <div class="section section1">
             <div class="offerNameField field">
                 <p class="fieldHeader">Offer Name</p>
-                <input type="text" name="offerName" id="offerName" class="highlight-on-hover" placeholder="Offer name...">
+                <input type="text" name="offerName" id="offerName" class="highlight-on-hover" placeholder="Offer name..." value="hui">
             </div>
 
             <div class="priceField field">
                 <p class="fieldHeader">Price</p>
-                <input type="text" name="price" id="price" class="highlight-on-hover" placeholder="Price...">
+                <input type="text" name="price" id="price" class="highlight-on-hover" placeholder="Price..." value="89">
             </div>
 
             <div class="descriptionField field">
                 <p class="fieldHeader">Description</p>
-                <textarea name="description" id="description" class="highlight-on-hover" placeholder="What are you offering..."></textarea>
+                <textarea name="description" id="description" class="highlight-on-hover" placeholder="What are you offering...">zuzu</textarea>
+            </div>
+            <div class="timeField field">
+                <p class="fieldHeader">Completion Time</p>
+                <input type="text" name="competionTime" id="completionTime" class="highlight-on-hover" value="89896745" placeholder="Time to complete an order...">
             </div>
         </div>
         <div class="seperator"></div>
@@ -71,7 +77,7 @@
             </div>
             <div class="keywordsField field">
                 <p class="fieldHeader">Keywords</p>
-                <input type="text" name="keywords" id="keywords" class="highlight-on-hover" placeholder="keyword1; keyword2; keyword3...">
+                <input value="zu;io;jk;nm" type="text" name="keywords" id="keywords" class="highlight-on-hover" placeholder="keyword1; keyword2; keyword3...">
             </div>
         </div>
         <div class="seperator"></div>
@@ -97,7 +103,7 @@
                             </div>
                         </li>
                     </template>
-                    <svg version="1.1" viewBox="0 0 50 50" class="outlineButton addFeatureBtn dontDelete" onclick="addEmptyFeature()">
+                    <svg version="1.1" viewBox="0 0 50 50" class="outlineButton addFeatureBtn dontDelete" id="addFeatureBtn" onclick="addEmptyFeature()">
                         <line fill="none" stroke-miterlimit="10" stroke-width="4" x1="9" x2="41" y1="25" y2="25"/>
                         <line fill="none" stroke-miterlimit="10" stroke-width="4" x1="25" x2="25" y1="9" y2="41"/>
                     </svg>                     
@@ -109,49 +115,29 @@
             <div class="thumbnailField field">
                 <p class="fieldHeader">Thumbnail</p>
                 <label for="thumbnailInput">
-                    <img src="images/empty.png" class="thumbnail image">
+                    <img src="images/empty.png" class="thumbnail image" id="thumbnailImg">
                 </label>
-                <input type="file" name="thumbnail" id="thumbnailInput" accept="image/*" style="display: none;">
+                <input type="file" name="thumbnail" id="thumbnailInput" accept="image/*" style="display: none;" onchange="renderTitleImage(event)">
                 <label for="thumbnailInput">change thumbnail</label>
             </div>
 
             <div class="imagesField field">
                 <p class="fieldHeader">Images</p>
                 <ul class="imageList">
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <li>
-                        <img src="images/empty.png" class="image">
-                    </li>
-                    <input type="file" name="images" id="imagesInput" accept="image/*" style="display: none;">
-                    <label for="thumbnailInput" style="margin-left: 4vw;">select Images</label>
+                    <template>
+                        <li>
+                            <img src="images/empty.png" class="image">
+                        </li>
+                    </template>
+                    <input type="file" multiple  name="images" id="imagesInput" accept="image/*" style="display: none;" onchange="renderImages(event)">
+                    <label for="imagesInput" style="margin-left: 4vw;" id="imageList">select Images</label>
                 </ul>
             </div>
+        </div>
+
+        <div class="btnSection section">
+            <div class="createOfferBtn button" onclick="buildOffer()">Create Offer</div>
+            <div class="cancelBtn alertButton">Cancel</div>
         </div>
     </main>
 </div>

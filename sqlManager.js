@@ -30,7 +30,7 @@ function toJSON(xhr, returnArray=false){
 function getAllItemsFromTable(table, condition){
     if(!condition){condition = "";}
     var sql = "SELECT * FROM `"+table+"`"+condition;
-        return query(sql);
+    return query(sql);
 }
 
 function checkSignIn(emailAddress, password){
@@ -106,8 +106,12 @@ function getUserRatings(id){
     return xhr.responseText;
 }
 
-
-
+function arrayToString(array){
+    return array.join(";")
+}   
+function stringToArray(string){
+    return string.split(';');
+}
 
 function getUUID(seed) {
     const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

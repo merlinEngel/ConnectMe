@@ -309,7 +309,7 @@ function getCategory(string){
     if(string[0] == "c"){
         return toJSON(getAllItemsFromTable("categories", " WHERE short='"+string+"'").responseText)[0]
     }else{
-        return toJSON(getAllItemsFromTable("categories", " WHERE fullName='"+string+"'").responseText)
+        return toJSON(getAllItemsFromTable("categories", " WHERE fullName='"+string+"'").responseText)[0]
     }
 }
 

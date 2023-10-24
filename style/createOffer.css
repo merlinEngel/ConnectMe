@@ -13,13 +13,6 @@ h2{
     margin-block: 3.333333vh;
 }
 
-.missing{
-    box-shadow: 0 0 0.625vw rgba(0, 0, 0, .4);
-    transform: scale(1.007);
-    outline: none;
-    border: 2px solid #b30000;
-}
-
 input[type=text], textarea{
     border-radius: 12px;
     height:4.4444444444vh;
@@ -127,7 +120,6 @@ select{
 
     border-radius: 100vh;
     padding: .1vh;
-    border: 1px  solid;
 }
 .featureList svg, .featureList .addFeatureBtn *{
     transition: .2s;
@@ -142,6 +134,7 @@ select{
     height: 20vh;
     background: #c2c2c2;
     border-radius: 16px;
+    border: 1px solid black;
 }
 
 .imageList{
@@ -154,5 +147,32 @@ select{
 .imagesField{
     align-items: start;
     margin-top: 8vh;
+}
+
+.btnSection{
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    align-items: end;
+    margin-block: 5vh;
+}
+
+.createOfferBtn, .cancelBtn{
+    height: 6vh;
+    width: 13vw;
+
+    font-size: 2.5vh;
+}
+
+.missing{
+    box-shadow: 0 0 0.625vw rgba(0, 0, 0, .4);
+    transform: scale(1.007);
+    outline: none;
+    border: 2px solid #b30000;
+}
+
+#imageList{
+    border-radius: 16px;
+    width: 10vw;
 }
 }
