@@ -67,16 +67,16 @@ const prices = [
 
 const categories = toJSON(getAllItemsFromTable("categories").responseText);
 
-for (let i = 0; i < 10000; i++) {
+for (let i = 0; i < 50; i++) {
     
         const serviceName = serviceNames[i % serviceNames.length];
         const price = prices[i % prices.length];
-        const categorie = categories[i % categories.length];
+        const category = categories[i % categories.length];
 
         // if(i%2 == 0){
-        //     createOffer(serviceName, "Merlin Engel", price, getCategory(categorie)["short"], "None");
+        //     createOffer(serviceName, "Merlin Engel", price, category.short, "None");
         // }else{
-        //     createRequest(serviceName, "Merlin Engel", price, getCategory(categorie)["short"], "None");
+        //     createRequest(serviceName, "Merlin Engel", price, category.short, "None");
         // }
 }
 //#endregion
@@ -103,53 +103,121 @@ function updatePage(){
     renderList(filterItems(getAllOffersFromDb(), getAllRequestsFromDb()));
 }
 
-function renderList(items){
+function renderList(items_){
+    if(sortMode){
+        var items = sortItems(items_, sortMode, ascending);
+    }else{
+        var items = items_;
+    }
+
     var currentPage = this.currentPage;
     var requestsPerPage = this.requestsPerPage;
 
     if(items.length == 0){
         document.querySelector(".notFoundSection").style.display = ""
+        return
+    }else{document.querySelector(".notFoundSection").style.display = "none"}
+
+    if(items.length <= requestsPerPage){
+        document.querySelector(".pageButtons").style.display = "none"
+    }else{
+        document.querySelector(".pageButtons").style.display = ""
     }
     
-    if (currentPage < 1){
-        x = 0
-    }
-    else{
-        x = 1
-    }
-    
-    if(items.length <= 1){
+    if(items.length < 1){
         console.assert("No items to render");
         return;
     }
-    
     for (let i = requestsPerPage*(currentPage-1); i < requestsPerPage*(currentPage); i++) {
-        try{
-            const myList = document.querySelector('.requestList ul');
-            
-            var template = document.querySelector('.requestList ul template');
-            var clone = document.importNode(template.content, true);
-            
-            clone.querySelector('li').querySelector('.details .name').textContent = items[i].title;
-            clone.querySelector('li').querySelector('.details .user').textContent = items[i].userName;
-            clone.querySelector('li').querySelector('.details .price').textContent = items[i].price + "$";
-            clone.querySelector('li').querySelector('.category p').textContent = getCategory(items[i].categoryShort)["fullName"];
-            clone.querySelector('li').setAttribute('id', items[i].id);
-            clone.querySelector('li').querySelector('.requestOfferIcon').setAttribute('id', items[i].isOffer);
-        
-            if(items[i].isOffer == 1){
-                clone.querySelector('li').querySelector('.container .topLine .requestOfferIcon #requestText').textContent = "Offer";
-                clone.querySelector('li').querySelector('.container').style.background = "url("+items[i].thumbnail+")";
-            }else{  
-                clone.querySelector('li').querySelector('.container .topLine .requestOfferIcon #requestText').textContent = "Request";
-            }
-
-            myList.appendChild(clone);
-        }catch(err){
-            console.error("Couldnt render item:"+i + "\r\n Error:" + err);
+        if(i >= items.length){
+            break
         }
+        const myList = document.querySelector('.requestList ul');
+            
+        var template = document.querySelector('.requestList ul template');
+        var clone = document.importNode(template.content, true);
+            
+        clone.querySelector('li').querySelector('.details .name').textContent = items[i].title;
+        clone.querySelector('li').querySelector('.details .user').textContent = items[i].userName;
+        clone.querySelector('li').querySelector('.details .price').textContent = items[i].price + "$";
+        clone.querySelector('li').querySelector('.category p').textContent = getCategory(items[i].categoryShort)["fullName"];
+        clone.querySelector('li').setAttribute('id', items[i].id);
+        clone.querySelector('li').querySelector('.requestOfferIcon').setAttribute('id', items[i].isOffer);
+            
+        if(items[i].isOffer == 1){
+            try{
+            files = getAllFilesInDirectory("files/offerData/"+items[i].id+"/");
+            files.forEach(element => {if(element.includes("thumbnail")) file=element})
+            clone.querySelector('li').querySelector('.container').style.backgroundImage = "url(files/offerData/"+items[i].id+"/"+file+")";
+            }catch{}
+            clone.querySelector('li').querySelector('.container .topLine .requestOfferIcon #requestText').textContent = "Offer";
+        }else{  
+            clone.querySelector('li').querySelector('.container .topLine .requestOfferIcon #requestText').textContent = "Request";
+        }
+        myList.appendChild(clone);
     }
 }
+
+function sortItems(items, property, ascending = true){
+    if(property == "title"){
+        items.sort(function(a, b) {
+            var nameA = a.title.toUpperCase(); // Konvertiere die Namen zu Großbuchstaben, um die Sortierung zu vereinfachen
+            var nameB = b.title.toUpperCase();
+            if (nameA < nameB) {
+              return -1; // 'a' kommt vor 'b'
+            }
+            if (nameA > nameB) {
+              return 1; // 'b' kommt vor 'a'
+            }
+            return 0; // Namen sind gleich
+        });
+    }
+    else if(property == "user"){
+        items.sort(function(a, b) {
+            var nameA = a.userName.toUpperCase(); // Konvertiere die Namen zu Großbuchstaben, um die Sortierung zu vereinfachen
+            var nameB = b.userName.toUpperCase();
+            if (nameA < nameB) {
+              return -1; // 'a' kommt vor 'b'
+            }
+            if (nameA > nameB) {
+              return 1; // 'b' kommt vor 'a'
+            }
+            return 0; // Namen sind gleich
+        });
+    }
+    else if(property == "price"){
+        items.sort(function(a, b) {
+            var nameA = parseFloat(a.price); // Konvertiere die Namen zu Großbuchstaben, um die Sortierung zu vereinfachen
+            var nameB = parseFloat(b.price);
+            if (nameA < nameB) {
+              return -1; // 'a' kommt vor 'b'
+            }
+            if (nameA > nameB) {
+              return 1; // 'b' kommt vor 'a'
+            }
+            return 0; // Namen sind gleich
+        });
+    }
+    else if(property == "date"){
+        items.sort(function(a, b) {
+            var nameA = new Date(a.creationTime).getTime()
+            var nameB = new Date(b.creationTime).getTime();
+            if (nameA < nameB) {
+                return -1; // 'a' kommt vor 'b'
+            }
+            if (nameA > nameB) {
+                return 1; // 'b' kommt vor 'a'
+            }
+            return 0; // Namen sind gleich
+        });
+    }
+
+    if(!ascending){
+        items = items.reverse()
+    }
+    return items;
+}
+
 function clearList(){
     const myList = document.querySelector('.requestList ul');
     const childNodes = Array.from(myList.children);
@@ -200,15 +268,23 @@ function filterList(items, type){
         var category = item.categoryShort;
 
         var isSelectedCategory = false;
-            selectedCategories.forEach(crntCategory =>{
-
+        selectedCategories.forEach(crntCategory =>{
             if(crntCategory.replace(/\s/g,'').toLowerCase() == category.replace(/\s/g,'').toLowerCase()){
                 isSelectedCategory = true;
             }
         });
+        isKeyword = false;
+        try{
+            keywords = item.keywords.split(";");
+            keywords.forEach(element =>{
+                if(element.includes(filterString) || filterString.includes(element)){
+                    isKeyword = true;
+                }
+            })
+        }catch{}
         
         if((showOffers && type == "offers") || (showRequests && type == "requests")){
-            if(user.replace(/\s/g,'').toLowerCase().includes(filterString) || name.replace(/\s/g,'').toLowerCase().includes(filterString)){
+            if(user.replace(/\s/g,'').toLowerCase().includes(filterString) || name.replace(/\s/g,'').toLowerCase().includes(filterString) || isKeyword){
                 if (minPrice <= price){
                     if(price <= maxPrice){
                         if(isSelectedCategory){
@@ -219,8 +295,7 @@ function filterList(items, type){
             }
         }
     });
-
-    return filteredItems
+    return filteredItems;
 }
 
 function checkEnter(event) {
@@ -356,7 +431,7 @@ function getAllItems(table){
     if (xhr.readyState === 4 && xhr.status === 200) {
         try{
             return JSON.parse(xhr.responseText);
-        }catch(err){
+        }catch{
             return[];
         }
     }
@@ -376,10 +451,8 @@ function shuffle(a) {
 
 function openItem(event){
     var parent = event.target.parentNode
-    console.log(parent)
     while(parent.tagName != "LI")
         parent = parent.parentNode
-    console.log(parent)
 
     var originUrl = window.origin;
     var fullUrl = originUrl + "/connectMe/item.html" + "?id=" + parent.id + "&type=" + parent.querySelector(".requestOfferIcon").id;
@@ -387,7 +460,31 @@ function openItem(event){
     window.location.href = fullUrl;
 }
 
+var sortMode = "price";
+var ascending = true;
+function updateSortMode(){
+    var sortModeSelect = document.querySelector(".searchBar #sortTypeDropdown");
+    var sortMode_;
+    var ascending_ = true;
+
+    if(sortModeSelect.value=="priceAsc"){ sortMode_ = "price"; ascending_ = true;}
+    if(sortModeSelect.value=="priceDesc"){ sortMode_ = "price"; ascending_ = false;}
+
+    if(sortModeSelect.value=="titleAsc"){ sortMode_ = "title"; ascending_ = true;}
+    if(sortModeSelect.value=="titleDesc"){ sortMode_ = "title"; ascending_ = false;}
+
+    if(sortModeSelect.value=="userAsc"){ sortMode_ = "user"; ascending_ = true;}
+    if(sortModeSelect.value=="userDesc"){ sortMode_ = "user"; ascending_ = false;}
+
+    if(sortModeSelect.value=="dateAsc"){ sortMode_ = "date"; ascending_ = true;}
+    if(sortModeSelect.value=="dateDesc"){ sortMode_ = "date"; ascending_ = false;}    
+
+    sortMode = sortMode_;
+    ascending = ascending_;
+    updatePage();
+}
+
 try{
 initCategoryList();
 updatePage();
-}catch{}
+}catch(error){console.error(error)}

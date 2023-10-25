@@ -30,3 +30,21 @@ function getFileNameFromPath(path){
     var fileName = path.replace(/^.*[\\/]/, '')
     return fileName;
 }
+
+function getAllFilesInDirectory(path){
+    path="../"+path;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "PHP/getAllFiles.php", false);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    var data = {
+        path:path
+    };
+
+    var params = Object.keys(data).map(function (key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
+    }).join("&");
+
+    xhr.send(params);
+    return toJSON(xhr.responseText);
+}

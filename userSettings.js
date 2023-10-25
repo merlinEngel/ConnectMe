@@ -124,11 +124,11 @@ function renderOffer(name, orders, maxOrdersPerOffer){
     orders.forEach(order =>{
         if(i < maxOrdersPerOffer){
             cloneTwo = document.importNode(templateTwo.content, true);
-            console.log(order['id'])
 
             cloneTwo.querySelector(".ordersLi").id = order['id'];
             cloneTwo.querySelector(".ordersLi").querySelector(".clientName").textContent = getUser(order['clientId'])['fullName']
             cloneTwo.querySelector(".ordersLi").querySelector(".infos .remainingTime").textContent = getRemainingTime(order['id']) + " days remaining";
+            if(!order.accepted) cloneTwo.querySelector("*").style.border = "2px solid #b30000";  
 
             myListTwo.appendChild(cloneTwo);
             i+=1
@@ -179,7 +179,6 @@ profilePicInput.addEventListener("change", function() {
     query("UPDATE `user` SET `profilePicturePath`='files/userData/" + uuid + "/profilePicture" + id +"." + dateiSplit[dateiSplit.length - 1] + "' WHERE `uuid`='" + uuid + "'")
     path = getProfilePicturePath(getUser().id)
 
-    console.log(path)
     document.querySelector(".profilePic img").src = path;
 });
 

@@ -1,1 +1,1 @@
-if(getUser().id){}else{window.location.href = "login.html?from="+window.location.href; console.log(window.location.href)}
+if(getUser().id){}else{window.location.href = "login.html?from="+window.location.href.replace("&", ")")}

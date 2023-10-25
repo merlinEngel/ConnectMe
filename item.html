@@ -112,12 +112,21 @@
                     
                         <div class="features">
                             <div class="topLine">
-                                <div class="info"></div>
-                                <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="15" height="11" viewBox="0 0 15 11" fill="none" onclick="switchFeatureList(event)">
                                     <path d="M1.37452 0.625488L6.41721 8.89319C7.01274 9.86959 7.98725 9.86959 8.58278 8.89319L13.6255 0.625488" stroke="black" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
                                 </svg>
                                 <p>Features</p>
                             </div>
+                            <ul class="featureList">
+                                <template>
+                                    <li>
+                                        <input type="checkbox" name="featureCheckBox" id="featureCheckBox">
+                                        <p class="featureName"></p>
+                                        <p class="featurePrice"></p>
+                                        <p class="featureTime"></p>
+                                    </li>
+                                </template>
+                            </ul>
                         </div>
                     </div>
 

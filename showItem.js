@@ -28,15 +28,14 @@ function getItemInformation(){
 }
 
 function showItem(item){
-    console.log(item)
     var user = getUserByName(item.userName)[0];
 
     document.querySelector('main h3').textContent = item.title;
     document.querySelector('main .wrapper .left .userInfo .topLine .userName').textContent = item.userName;
     document.querySelector('main .wrapper .right .topContainer .info .description').textContent = item.description;
-    document.querySelector('main .wrapper .right .lowerContainer .cost .data').textContent = "from " + item.price + "$";
+    document.querySelector('main .wrapper .right .lowerContainer .cost .data').textContent = item.price + "$";
     if(getItemInformation()[1] == 1){
-        document.querySelector('main .wrapper .right .lowerContainer .completionTime .data').textContent = item.completionTime + " days";
+        document.querySelector('main .wrapper .right .lowerContainer .completionTime .data').textContent = item.completionTime + " d";
     }else{
         document.querySelector('main .wrapper .right .lowerContainer .completionTime').style.display = "none";
         document.querySelector('main .wrapper .right .lowerContainer .avrgRating').style.display = "none";
@@ -71,31 +70,79 @@ function showItem(item){
 
     document.querySelector(".userInfo .topLine img").src = getProfilePicturePath(user.id)
 
-    pictures = [item.picture1, item.picture2, item.picture3, item.picture4, item.picture5];
+    pictures = [item.thumbnail, item.picture1, item.picture2, item.picture3, item.picture4, item.picture5];
+    console.log(pictures)
 
     mainImage = document.querySelector(".images .mainImage");
     imgTemplate = document.querySelector(".images template");
     imgList = document.querySelector(".images ul");
     pictures.forEach(element => {
         if(element != null){
-            
+            console.log(element)
             clone = document.importNode(imgTemplate.content, true)
-            clone.querySelector("img").src = element;
-            if(pictures.indexOf(element) == 0){
-            }
+            clone.querySelector("img").src = "/connectMe"+element;
+            
             imgList.appendChild(clone);
         }
     })
     imgList.getElementsByTagName("li")[0].classList.add("active");
+    mainImage.src = "/connectMe"+pictures[0]
 
+    features = [];
+    item.features.split(";").forEach(element => {
+        splitElement = element.split(",")
+        splitElement[1] = parseFloat(splitElement[1]);
+        splitElement[2] = parseFloat(splitElement[2]);
+        features.push(splitElement);
+    })
+    featureList = document.querySelector(".featureList");
+    template = featureList.querySelector("template");
+    features.forEach(feature =>{
+        clone = document.importNode(template.content, true);
 
-    console.log(user)
+        clone.querySelector(".featureName").textContent = feature[0];
+        if(feature[1] <= 0 && feature[2] <= 0){
+            clone.querySelector("input").style.display = "none"
+            clone.querySelector(".featureName").style.marginLeft = "1.3vw"
+            clone.querySelector(".featurePrice").textContent = "INCLUDED";
+            clone.querySelector("input").checked = true
+        }else if(feature[1] <= 0){
+            clone.querySelector(".featurePrice").textContent = "FREE";
+            clone.querySelector(".featureTime").textContent = feature[2] + "d"
+        }else{
+            clone.querySelector(".featureTime").textContent = feature[2] + "d"
+            clone.querySelector(".featurePrice").textContent = feature[1] + "$"
+        }
+
+        featureList.appendChild(clone)
+    })
+}
+function switchFeatureList(e){
+    featureList = document.querySelector(".featureList");
+    
+    if(featureList.style.display == ""){featureList.style.display = "none"; e.target.style.transform="rotate(-90deg)"}
+    else{featureList.style.display = ""; e.target.style.transform=""}
+}
+
+function getCheckedFeatures(){
+    item = getItem();
+
+    var featureList = document.querySelector(".featureList");
+    var listEntrys = Array.from(featureList.children);
+
+    var checkedFeatures = [];
+    listEntrys.forEach(element =>{
+        if(element.tagName != "LI"){}else{
+        // if(element.querySelector(".featurePrice") == "INCLUDED"){checkedFeatures.push(listEntrys.indexOf(element));}
+        if(element.querySelector("input").checked){checkedFeatures.push(listEntrys.indexOf(element));}
+    }})
+
+    return checkedFeatures;
 }
 
 function setPicture(event){
     imgListItems = document.querySelector(".images ul").getElementsByTagName("li");
     for(var i = 0; i < imgListItems.length; i++){
-        console.log(imgListItems[i].classList);
         try{
             imgListItems[i].classList.remove('active'); 
         }catch{}
@@ -107,9 +154,8 @@ function setPicture(event){
 }
 
 function orderItem(){
-    xhr = query("INSERT INTO orders (clientId, providerId, itemId, isOffer) VALUES ('"+getUser()[0]['id']+"', '"+1+"', '"+parseInt(getItem()[0].id)+"', '"+getItem()[0].isOffer+"')")
-
-    console.log(xhr.responseText);
+    features = getCheckedFeatures();
+    xhr = query("INSERT INTO orders (clientId, providerId, itemId, isOffer, features) VALUES ('"+getUser()[0]['id']+"', '"+1+"', '"+parseInt(getItem()[0].id)+"', '"+getItem()[0].isOffer+"', '"+features.join(";")+"')")
 }
 
 showItem(getItem());

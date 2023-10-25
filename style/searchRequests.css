@@ -16,7 +16,7 @@
         width: 64vw;
         height: 4vh;
 
-        border-radius: 30px;
+        border-radius: 100vw;
         border: solid 1px black;
 
         background-color: #D9D9D9;
@@ -224,6 +224,19 @@
     align-items: center;
 }
 
+select#sortTypeDropdown{
+    padding-inline: 1vw;
+    margin-right: 4vw;
+
+    width: 11svw;
+    height: 4.6296vh;
+
+    border-radius: 100vw;
+    border: 1px solid black;
+
+    background-color: #D9D9D9;
+}
+
 main{
     display: flex;
     justify-content: space-around;
@@ -310,8 +323,8 @@ main{
 .requestList ul li .container{
     width: inherit;
     height: inherit;
-    background-image: url(../images/defaultRequestPic.jpg);
-    background-size: contain;
+    background-size: cover;
+    background-position: center center;
     border: 3px solid #D9D9D9;
     border-radius: 1vw;
     display: flex;
@@ -408,9 +421,9 @@ main{
 }
 
 .pageButton{
-    width: 4.62962962962963vw;
-    height: 4.62962962962963vw;
-    border-radius: 25px;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 15px;
     background: #D9D9D9;
     cursor: pointer;
 }

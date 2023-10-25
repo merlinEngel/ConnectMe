@@ -113,7 +113,13 @@ function buildOffer(){
     //Making Information Database compatible
     var keywords_ = arrayToString(keywords);
     var stringFeatures = [];
-    features.forEach(element =>{stringFeatures.push(element.join("?"))})
+    features.forEach(element =>{
+        if(!element[1] || element[1] <= 0){element[1] = 0}
+        if(!element[2] || element[2] <= 0){element[2] = 0}
+        if(!element[0] || element[0] == ""){}else{
+            stringFeatures.push(element.join("?"))
+        }
+    });
     var features_ = features.join(";");
 
     //Checking if same offer exists
@@ -132,40 +138,27 @@ function buildOffer(){
     images.forEach(element => {
         try{
             query("UPDATE `offers` SET `picture"+(images.indexOf(element)+1)+"`='/files/offerData/"+offerId+"/images/"+element.name+"' WHERE id='"+offerId+"'")
+            uploadFile(element, "/files/offerData/"+offerId+"/images/");
         }catch{console.log(element)}
     })}catch{}
     uploadFile(titlePicture, "/files/offerData/"+offerId, "thumbnail");
-    query("UPDATE `offers` SET `thumbnail`='/files/offerData/thumbnail."+splitFileName(titlePicture.name)[1]+"' WHERE id='"+offerId+"'")
+    query("UPDATE `offers` SET `thumbnail`='/files/offerData/"+offerId+"/thumbnail."+splitFileName(titlePicture.name)[1]+"' WHERE id='"+offerId+"'")
 
     //Saving features and keywords
     query("UPDATE `offers` SET `features`='"+features_+"', `keywords`='"+keywords_+"' WHERE id='"+offerId+"'").responseText
 
     window.alert("Offer successfulyy created!");
     window.location.href = "userSettings.html"
-
-
-
-    //----------------------------------------------------------------------------------------------------------------------------------------------
-    // GET FEATURES AGAIN---------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------------------------
-    // features = [];
-    // features_.split(";").forEach(element => {
-    //     splitElement = element.split(",")
-    //     splitElement[1] = parseFloat(splitElement[1]);
-    //     splitElement[2] = parseFloat(splitElement[2]);
-    //     features.push(splitElement);
-    // })
-    //---------------------------------------------------------------------------------------------------------------------------------------------
 }   
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 // ENABLE WHEN PUBLISHING---------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------------
-// window.addEventListener("beforeunload", function (e) {
-//     e.preventDefault();
-//     e.returnValue = '';
-//     (e || window.event).returnValue = confirmationMessage; // Standard-basierte Browsersupport
-//     return confirmationMessage; // IE-Support
-// });
+window.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    e.returnValue = '';
+    (e || window.event).returnValue = confirmationMessage; // Standard-basierte Browsersupport
+    return confirmationMessage; // IE-Support
+});
 
 initCategoryList();

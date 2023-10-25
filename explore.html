@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel = "icon" href = "images/logoIcon.svg"> 
     <script src="sqlManager.js" defer></script>
+    <script src="fileManager.js" defer></script>
     <script src="userControl.js" defer></script>
     <script src="app.js" defer></script>
     <script src="checkLogIn.js" defer></script>
@@ -38,6 +39,17 @@
         </div>
     </header>
     <div class="searchBar">
+        <select name="sortType" id="sortTypeDropdown" onchange="updateSortMode()">
+            <option value="priceAsc">Cheap-Expensive</option>
+            <option value="priceDesc">Expensive-Cheap</option>
+
+            <option value="titleAsc">Title A-Z</option>
+            <option value="titleDesc">Title Z-A</option>
+
+            <option value="userAsc">User A-Z</option>
+            <option value="userDesc">User Z-A</option>
+        </select>
+
         <div class="searchBox">
             <input type="text" name="searchbar" class="textInput" id="searchText" placeholder="Search..." onkeydown="checkEnter(event)">
             <svg viewBox="0 0 46 46" class="searchIcon icon">
@@ -125,7 +137,6 @@
             </div>
         </div>
     </main>
-
     <div class="spacer"></div>
 </body>
 </html>

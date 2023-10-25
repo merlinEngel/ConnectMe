@@ -22,7 +22,7 @@ h3{
 }
 
 .images{
-    height: 50.46296296296296vh;
+    height: 52vh;
 }
 
 .images img{
@@ -30,10 +30,11 @@ h3{
     width: 100%;
     background-size: contain;
     border-radius: 16px;
+    border: 1px solid black;
 }
 
 .images .imgGallery{
-    height: 4.722222222222222vh;
+    height: 6vh;
 }
 .images .imgGallery ul{
     display: flex;
@@ -42,6 +43,7 @@ h3{
     gap: 1.0416666666666667vw;
     overflow-y: hidden;
     overflow-x: scroll;
+    height: 6vh;
 
     scrollbar-width: thin;
 
@@ -49,21 +51,25 @@ h3{
 }
 .images .imgGallery ul::-webkit-scrollbar {
     width: 0;
+    height: 0;
+    margin-top: 1vh;
 }
 .images .imgGallery ul::-webkit-scrollbar-track {
+    height: 0;
     background: transparent;
 }
 .images .imgGallery ul::-webkit-scrollbar-thumb {
+    height: 0;
     background: transparent;
 }
 
 .images .imgGallery ul li{
-    width: 5.208333333333334vw;
-    height: 4.62962962962963vh;
+    width: 5.208vw;
+    height: 6vh
 }
 .images .imgGallery ul li img{
     width: 5.208333333333334vw;
-    height: 4.62962962962963vh;
+    height: 6vh;
     border-radius: .5vw;
 }
 .images .imgGallery ul li:hover:not(.active){
@@ -123,7 +129,7 @@ h3{
 }
 
 .wrapper .right .topContainer{
-    height: 47.68518518518518vh;
+    height: 49vh;
     width: 25.46875vw;
     background: #D9D9D9;
     border-radius: 16px;
@@ -160,7 +166,7 @@ h3{
 
 .wrapper .right .topContainer .features .topLine svg{
     width: 0.46875vw;
-    height: 1.1343518518518518vh;
+    height: 1.134vh;
 }
 
 .wrapper .right .topContainer .features .topLine{
@@ -184,5 +190,21 @@ h3{
     display: flex;
     justify-content: space-between;
     padding-inline: 1.0416666666666667vw;
+}
+
+.featureList{
+    margin-left: 2vw;
+}
+
+.featureList li{
+    display: flex;
+    gap: .5vw;
+}
+
+.featureList li .featureName{
+    width: 12vw;
+}
+.featureList li .featurePrice, .featureList li .featureTime{
+    width: 4vw;
 }
 }

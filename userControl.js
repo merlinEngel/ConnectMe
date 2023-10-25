@@ -107,7 +107,7 @@ function signIn(emailAddress, password){
         }
         
         else{
-            window.location.href = from;
+            window.location.href = from.replace(")", "&");
         }
     }
 }
