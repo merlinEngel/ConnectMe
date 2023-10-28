@@ -72,7 +72,14 @@ function hideAllPages(){
     generalInfoPageHeader.classList.remove('active');
 }
 
-function getAllOrders(){
+function renderAllOrders(){
+    //clear List
+    list = document.querySelector(".allOffers");
+    while(list.querySelector("li")){
+        list.querySelector("li").remove()
+    }
+
+    //render Orders
     var maxOffers = 20;
     var maxOrdersPerOffer = 10
     user = getUser();
@@ -128,7 +135,11 @@ function renderOffer(name, orders, maxOrdersPerOffer){
             cloneTwo.querySelector(".ordersLi").id = order['id'];
             cloneTwo.querySelector(".ordersLi").querySelector(".clientName").textContent = getUser(order['clientId'])['fullName']
             cloneTwo.querySelector(".ordersLi").querySelector(".infos .remainingTime").textContent = getRemainingTime(order['id']) + " days remaining";
-            if(!order.accepted) cloneTwo.querySelector("*").style.border = "2px solid #b30000";  
+            if(order.accepted == 0){
+                cloneTwo.querySelector("*").style.border = "2px solid #b30000";
+                cloneTwo.querySelector(".acceptBtn").style.display = "";
+                cloneTwo.querySelector(".chatBtn").style.display = "none";
+            }
 
             myListTwo.appendChild(cloneTwo);
             i+=1
@@ -148,19 +159,29 @@ function openChat(event){
     window.location.href = "chat.html"+"?orderId="+id;
 }
 
+function acceptOrder(event){
+    listItem = event.target;
+    while(listItem.tagName != "LI"){listItem = listItem.parentNode;}
+
+    orderId = listItem.id;
+    if(window.confirm("Do you really want to accept this order?")){
+        console.log(orderId)
+        query("UPDATE `orders` SET `accepted`=1 WHERE `id`='"+orderId+"'")
+        query("UPDATE `orders` SET `startTime`=DEFAULT WHERE `id`='"+orderId+"'")
+        renderAllOrders()
+    }
+}
+
 
 
 generalInfoPage = document.querySelector("main .right .tabs .generalInformationTab");
 myOffersPage = document.querySelector("main .right .tabs .myOffersTab");
 generalInfoPageHeader = document.querySelector("main .left .tabList #generalInfoHeader");
 myOffersPageHeader = document.querySelector("main .left .tabList #myOffersHeader");
-if(getUser()[0] != "K"){
-    loadUI();
-}
 
 function getPage(){
     url = new URL(window.location.href);
-
+    
     page = url.searchParams.get("page");
     if(page == null){
         page = 0
@@ -168,6 +189,7 @@ function getPage(){
     return page;
 }
 
+// try{
 var profilePicInput = document.querySelector(".generalInformationTab .profilePic input#profilePic");
 profilePicInput.addEventListener("change", function() {
     var dateiInput = profilePicInput;
@@ -178,18 +200,22 @@ profilePicInput.addEventListener("change", function() {
     console.log(uploadFile(datei, "files/userData/" + uuid, "profilePicture" + id))
     query("UPDATE `user` SET `profilePicturePath`='files/userData/" + uuid + "/profilePicture" + id +"." + dateiSplit[dateiSplit.length - 1] + "' WHERE `uuid`='" + uuid + "'")
     path = getProfilePicturePath(getUser().id)
-
+    
     document.querySelector(".profilePic img").src = path;
 });
+// }catch{}
+// try{
+    if(getUser()[0] != "K"){
+        loadUI();
+    }
+    renderAllOrders();
+    var uuid = getUser().uuid
+    try{
+        path = getProfilePicturePath(getUser().id)
+    }catch{
+        document.querySelector(".profilePic img").src = path
 
-getAllOrders();
-
-var uuid = getUser().uuid
-path = getProfilePicturePath(getUser().id)
-try{
-    document.querySelector(".profilePic img").src = path
-}catch{
-    document.querySelector(".profilePic img").src = "../images/defaultProfilePicture";
-}
-
-loadPage(getPage());
+        document.querySelector(".profilePic img").src = "../images/defaultProfilePicture";
+    }
+    loadPage(getPage());
+// }catch{}

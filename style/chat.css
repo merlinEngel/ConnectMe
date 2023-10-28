@@ -85,6 +85,15 @@ input[type=text]{
     background: #172678;
 }
 
+.chatArea ul li.serverMsg{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.chatArea ul li.serverMsg .container{
+    background: gray;
+}
+
 .chatArea ul li .container{
     width: 30vw;
     padding: 0.925925vh;

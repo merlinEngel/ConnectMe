@@ -145,28 +145,28 @@ main .right .generalInformationTab .profilePic img{
 .right .tabs .myOffersTab .allOffers .offerName{
     font-weight: 600;
     font-size: 2.5vh;
-    margin-left: 0.5263157894736842vw;
+    margin-left: 0.526vw;
     margin-bottom: 1.5vh;
 }
 
-.right .tabs .myOffersTab .allOffers .chatBtn *{
-    width: 1.0526315789473684vw;
+.right .tabs .myOffersTab .allOffers .miniBtn *{
+    width: 1.052vw;
     height: 2vh;
 }
 
-.right .tabs .myOffersTab .allOffers .chatBtn{
-    width: 1.0526315789473684vw;
-    height: 1.0526315789473684vw;
+.right .tabs .myOffersTab .allOffers .miniBtn{
+    width: 1.052vw;
+    height: 1.052vw;
     cursor: pointer;
     background: rgb(176, 176, 176);
-    padding: .4vh 0.21052631578947367vw;
+    padding: .4vh 0.21vw;
     border-radius: .5vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.right .tabs .myOffersTab .allOffers .chatBtn:hover{
+.right .tabs .myOffersTab .allOffers .miniBtn:hover{
     background: rgb(166, 166, 166);
     transform: scale(1.01);
 }

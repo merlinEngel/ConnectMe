@@ -46,6 +46,12 @@ function signUp(){
     lastName = document.querySelector(".signUpSection #lastName").value;
     emailAddress = document.querySelector(".signUpSection #emailAddress").value.replace(" ", "");
     password = document.querySelector(".signUpSection #password").value;
+    values =    [document.querySelector(".signUpSection #password"), document.querySelector(".signUpSection #emailAddress"),
+                document.querySelector(".signUpSection #firstName"),document.querySelector(".signUpSection #lastName")]
+    values.forEach(element =>{
+        if(element.value == "") element.classList.add("missing")
+        else element.classList.remove("missing")
+    })
 
     saveCookies = true;
 
@@ -53,7 +59,12 @@ function signUp(){
 
     isAlrRegistrated = false;
     
-    if(firstName != undefined && lastName != undefined && isValidEmail(emailAddress)){
+    if(!document.querySelector(".agbInput input").checked){
+        document.querySelector(".agbInput").classList.add("missing")
+        return;
+    }
+
+    if(firstName != "" && lastName != "" && isValidEmail(emailAddress)){
         if(getUserByName(fullName) == "Keine Angebote gefunden."){
             isAlrRegistrated = false;
         }else if(getUserByEmail(emailAddress) == "Keine Angebote gefunden."){
@@ -69,7 +80,11 @@ function signUp(){
             if(saveCookies){
                 saveUserCookie()
             }
+        }else{
+            return
         }
+    }else{
+        return
     }
 
     signIn(emailAddress, password)
@@ -78,7 +93,7 @@ function signUp(){
 
 function isValidEmail(string) {
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailPattern.test(string);
+  return emailPattern.test(string) && string.length > 5;
 }
 
 function signInLocal(){

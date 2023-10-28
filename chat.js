@@ -71,9 +71,12 @@ function renderMessages(messages){
 
     var clientTemplate = document.querySelector(".chatArea ul template#client");
     var providerTemplate = document.querySelector(".chatArea ul template#provider");
+    var serverTemplate = document.querySelector(".chatArea ul template#server");
 
     messages.forEach(message =>{
-        if(message['isClient']){
+        if(message['isServer']){
+            var clone = document.importNode(serverTemplate.content, true);
+        }else if(message['isClient']){
             var clone = document.importNode(clientTemplate.content, true);
         }else{
             var clone = document.importNode(providerTemplate.content, true);

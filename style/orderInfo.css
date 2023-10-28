@@ -1,0 +1,93 @@
+main{
+    margin-inline: 10vw;
+    margin-top: 10vh;
+    display: flex;
+    height: 50vh;
+    justify-content: space-between;
+}
+
+h1{
+    margin-inline: 10vw;
+    margin-top: 10vh;
+
+    font-weight: bold;
+    font-size: 6vh;
+}
+
+.left, .right{
+    width: 35%;
+    background-color: #d9d9d9;
+    border-radius: 16px;
+    padding: 3vh 2.5vw;
+}
+
+.left .info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.left .info p{
+    font-size: 2.5vh;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+}
+
+.left .info .name{
+    width: 65%;
+}
+.left .info .value{
+    width: 35%;
+}
+
+.price.info{
+    margin-top: auto;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right .priceCalculation .priceInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.right .priceCalculation .priceInfo.customExtraCost .value{
+    width: 4vw;
+    border-radius: .5vw;
+    padding-inline: .5vw;
+    text-align: right;
+    border: 1px solid black;
+}
+
+.right .priceCalculation .totalPrice{
+    margin-top: 2vh;
+}
+
+.right .priceCalculation .totalPrice::after{
+    width: 10vw;
+    height: 1px;
+    border-top: 1px solid black;
+}
+
+.buttonSection{
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonSection .finishOrderBtn{
+    height: 5vh;
+    width: 60%;
+    font-size: 2vh;
+}
+.buttonSection .cancelBtn{
+    height: 5vh;
+    width: 30%;
+    font-size: 2vh;
+}
