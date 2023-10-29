@@ -3,6 +3,7 @@
         --text: #242424;
         --background: #fff;
         --blue: #1e32a9;
+        --green: #138b38;
         --border: #000;
         --text-inverted: #fff;
     }
@@ -12,8 +13,16 @@
         --text: #fff;
         --background: #333;
         --blue: #a9951e;
+        --green: #8b1366;
         --border: #fff;
         --text-inverted: #000;
+    }
+
+    .header .logo :first-child{
+        fill: var(--green);
+    }
+    .header .logo :last-child{
+        fill: var(--blue);
     }
 }
 
@@ -38,7 +47,7 @@
 
 
 .header{
-    height: 7.56vh;
+    height: 7.6vh;
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
@@ -47,27 +56,36 @@
     padding-inline: 3vw;
 }
 
-.header .navItems :nth-child(1){
-    width: 5.56vw;
-    height: 5.56vw;
+.header .navItems a.active{
+    transform: scale(1.15);
+    color: var(--blue);
+    font-weight: bold;
+}
+.header .navItems a{
+    width: auto;
+    height: auto;
+    font-size: 2.5vh;
+}
+
+.header .navItems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 3.5vw;
+
+    margin-right: 2vw;
 }
 
 .header .logo, .header a{
-    height: 3vh;
+    height: 5vh;
+    width: 5vh;
 }
 
 .header .menuItem{
     width: 5.5625vw;
     height: 5.5625vw;
 }
-
-.navItems{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7vw;
-}
-
 .button{
     background: #172678;
     border-radius: 2.26vw;
@@ -93,29 +111,18 @@ html{
 
 @media only screen and (orientation:landscape){
 .header{
-    height: 5.555555555555vh;
+    height: 8vh;
 
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding-inline: 5.208333333vw;
-}
-
-.navItems{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header .navItems :nth-child(1){
-    width: 1.5625vw;
-    height: 1.5625vw;
+    padding-inline: 5vw;
 }
 
 .header .logo{
-    height: 2.592592vh;
+    height: 4;
 }
 
 .header .menuItem{

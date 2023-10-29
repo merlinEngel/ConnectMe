@@ -1,208 +1,56 @@
-@media only screen and (orientation:portrait){
-.top{   
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90vw;
-    margin-inline: 3vw;
-}
-
 main{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    margin-left: 3vw;
-}
+    margin-inline: 5vw;
+    margin-top: 15vh;
 
-main h1{
-    width: auto;
-}
-main h1 svg{
-    width: 80vw;
-    height: 20vh;
-}
-main .left .subHead{
-    font-size: 3.5vh;
-}
-
-main .top .right{
-    margin-top: 10vh;
-}
-
-main .top .arrow{
-    display: none;
-}
-
-.boxGrid{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-}
-
-.boxGrid .col1, .boxGrid, .col2{
-    display: flex;
-    flex-direction: column;
-}
-
-.box{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
-    margin-bottom: 5vh;
-    width: 90vw;
-    background-color: #c4c4c4;
-    padding-inline: 3vw;
-    border: 2px solid black;
-    border-radius: 5vw;
-}
-
-.box svg{
-    width: 10%;
-    height: auto;
-}
-
-.box p{
-    white-space: pre;
-    font-size: 2.6vh;
-    width: 80%;
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (orientation:landscape) and (min-width:600px){
-.top{
-    margin-inline: 5.208vw;
-    margin-top: 4.6296vh;
     display: flex;
 }
 
-main .left{
+.left .text h1{
+    font-weight: bold;
+    font-size: 6.5vh;
+}
+
+.left{
     width: 50%;
 }
 
-main .left h1{
-    margin-top: 7.407407vh;
-    width: auto;
-}
-main .left h1 svg{
-    height: 20.793703vh;
-    width: auto;
+.left .text h2{
+    font-weight: 200;
+    font-size: 3vh;
 }
 
-main .left h1 svg:hover{
-    transform: scale(1.006);
+.left .getStartedBtn{
+    margin-top: 4vh;
+    width: 10vw;
+    height: 5vh;
 }
 
-main .left .subHead{
-    font-size: 2.604166666666666666666666666vw;
-    font-weight: bold;
-    margin-top: 1.8888888888vh;
-}
-
-main .right{
-    flex-grow: 1;
-}
-
-.boxGrid{
-    margin-top: 15.740740vh;
-    margin-left: 8.8541vw;
-    width: 36.458333vw;
-    height: auto;
+.right{
+    width: 50%;
     display: flex;
-    gap: 1.5625vw;
-
+    justify-content: end;
 }
 
-.boxGrid .col1{
-    display: flex;
-    flex-direction: column;
-    gap: 1.5625vw;
-    align-items: end;
+.right .images{
+    height: 120%;
+    width: 80%;
+
+    position: relative;
 }
 
-.boxGrid .col2{
-    display: flex;
-    flex-direction: column;
-    gap: 1.5625vw;
-    align-items: start;
-    justify-content: center;
+.right .images :first-child{
+    width: 27vw;
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
+.right .images :last-child{
+    width: 15vw;
+    height: 30vh;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 
-.box{
-    width: 15.625vw;
-    height: 15.625vw;
-    border: black solid 0.208333333333vw;
-    border-radius: 1.6vh;
-    background: #CECECE;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    border: 1vw solid var(--background);
 }
-.box p{
-    width: 66%;
-    height: 66%;
-    display: flex;
-    align-items: center;
-    text-align: center
-}
-
-.box svg{
-    display: none;
-}
-
-.box:hover{
-    transform: scale(1.02);
-    box-shadow: 0 0 0.52083333333vw rgba(0, 0, 0, 0.7);
-}
-
-.box1{
-    width: 14.427vw;
-    height: 14.427vw;
-    background: #CECECE;
-    font-size: 3.7037vh;
-}
-
-.box2{
-    width: 10.7291666vw;
-    height: 10.7291666vw;
-    background: #A7A7A7;
-    font-size: 2.777777777777vh;
-}
-
-.box3{
-    width: 17.708333vw;
-    height: 17.708333vw;
-    background: #FFF;
-    font-size: 4.629629vh;
-}
-
-main .top .left .arrow{
-    width: 31.425052083333vw;
-    height: 25.837407vh;
-    transform: rotate(180deg) scaleX(-1) scaleY(-1);
-    stroke: #000;
-    stroke-width: 0.370370370vh;
-    margin-top: 0vw;
-    margin-left: 14.0625vw;
-}
-}
-
